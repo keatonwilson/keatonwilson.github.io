@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Beans on Keaton Wilson</title>
+    <link>https://keatonwilson.github.io/tags/beans/</link>
+    <description>Recent content in Beans on Keaton Wilson</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 19 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://keatonwilson.github.io/tags/beans/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>An overview of the bean project</title>
+      <link>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</link>
+      <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</guid>
+      <description>Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.</description>
+    </item>
+    
+    <item>
+      <title>Introduction (a more involved ‘hello world’). </title>
+      <link>https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/</link>
+      <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/</guid>
+      <description>Hello! I’m an ecologist and data scientist working at the University of Arizona in Tucson. I’m currently a postdoctoral fellow with the National Institute of Health (NIH), but as that position is coming to a close, am on the job market looking for new projects and challenges.
+Throughout my fellowship at the University of Arizona, I’ve become increasingly interested in data science, and have taken the plunge in applying some of the techniques I’ve developed a scientist to outside projects.</description>
+    </item>
+    
+  </channel>
+</rss>
