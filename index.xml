@@ -6,10 +6,19 @@
     <description>Recent content on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://keatonwilson.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The ecologist jumps into the deep, scary waters of machine learning...</title>
+      <link>https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</link>
+      <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</guid>
+      <description>Misconceptions About two years ago, when I started thinking more deeply about the possibility of a career in data science, I made a concerted effort to figure out where my gaps in knowledge were (a phrase we often overuse in science, in my opinion - it feels a bit tired) and what my weaknesses were. I felt strong in R, felt that I had experience munging messy data, and felt strong in my statistical background, but I had virtually no experience with machine learning (ML), which seemed to be all anyone was talking about when I got on the web and started looking at data science positions.</description>
+    </item>
     
     <item>
       <title>Bean munging and Excel Wrangling</title>
