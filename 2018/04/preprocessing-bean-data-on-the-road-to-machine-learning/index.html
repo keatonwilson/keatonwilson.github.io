@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Introduction (a more involved ‘hello world’). </title>
+    <title>Preprocessing Bean Data (on the road to Machine Learning)</title>
     <meta name="author" content="Keaton Wilson">
     <meta name="keywords" content="">
 
@@ -30,18 +30,18 @@
     
 
     
-    <meta name="description" content="Hello! I’m an ecologist and data scientist working at the University of Arizona in Tucson. I’m currently a postdoctoral fellow with the National Institute of Health (NIH), but as that position is coming to a close, am on the job market looking for new projects and challenges.
-Throughout my fellowship at the University of Arizona, I’ve become increasingly interested in data science, and have taken the plunge in applying some of the techniques I’ve developed a scientist to outside projects.">
-    <meta property="og:description" content="Hello! I’m an ecologist and data scientist working at the University of Arizona in Tucson. I’m currently a postdoctoral fellow with the National Institute of Health (NIH), but as that position is coming to a close, am on the job market looking for new projects and challenges.
-Throughout my fellowship at the University of Arizona, I’ve become increasingly interested in data science, and have taken the plunge in applying some of the techniques I’ve developed a scientist to outside projects.">
+    <meta name="description" content="The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
+More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?">
+    <meta property="og:description" content="The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
+More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Introduction (a more involved ‘hello world’). ">
-    <meta property="og:url" content="/2018/03/introduction-a-more-involved-hello-world/">
+    <meta property="og:title" content="Preprocessing Bean Data (on the road to Machine Learning)">
+    <meta property="og:url" content="/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
     <meta property="og:site_name" content="Keaton Wilson">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Keaton Wilson">
-    <meta name="twitter:description" content="Hello! I’m an ecologist and data scientist working at the University of Arizona in Tucson. I’m currently a postdoctoral fellow with the National Institute of Health (NIH), but as that position is coming to a close, am on the job market looking for new projects and challenges.
-Throughout my fellowship at the University of Arizona, I’ve become increasingly interested in data science, and have taken the plunge in applying some of the techniques I’ve developed a scientist to outside projects.">
+    <meta name="twitter:description" content="The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
+More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?">
     
       <meta name="twitter:creator" content="@keatonwilson">
     
@@ -228,15 +228,15 @@ Throughout my fellowship at the University of Arizona, I’ve become increasingl
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Introduction (a more involved ‘hello world’). 
+      Preprocessing Bean Data (on the road to Machine Learning)
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-03-19T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-04-03T00:00:00Z">
         
-  March 19, 2018
+  April 3, 2018
 
       </time>
     
@@ -245,11 +245,11 @@ Throughout my fellowship at the University of Arizona, I’ve become increasingl
   
     <span>in</span>
     
+      <a class="category-link" href="https://keatonwilson.github.io/categories/bean-project">bean project</a>, 
+    
       <a class="category-link" href="https://keatonwilson.github.io/categories/data-science">data science</a>, 
     
-      <a class="category-link" href="https://keatonwilson.github.io/categories/intro">intro</a>, 
-    
-      <a class="category-link" href="https://keatonwilson.github.io/categories/general">general</a>
+      <a class="category-link" href="https://keatonwilson.github.io/categories/machine-learning">machine learning</a>
     
   
 
@@ -259,12 +259,184 @@ Throughout my fellowship at the University of Arizona, I’ve become increasingl
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Hello! I’m an ecologist and data scientist working at the University of Arizona in Tucson. I’m currently a postdoctoral fellow with the National Institute
-of Health (NIH), but as that position is coming to a close, am on the job market looking for new projects and challenges.</p>
-<p>Throughout my fellowship at the University of Arizona, I’ve become increasingly interested in data science, and have taken the plunge in applying some of the techniques I’ve developed a scientist to outside projects. I decided to start this blog to detail and record some of my experiences with these projects, and document my journey into data science.</p>
-<p>If you’re mainly interested in my research as an ecologist (on bugs and immune systems and tasty plants), you can check out my <a href="http://www.keatonwilson.net">main website</a>. Though this blog will have bits and bobs of my science, it’s mostly about data science, side-projects and tools and tricks I’ve used.</p>
-<p>I hope you enjoy! And please feel free to drop me a line any time if you have questions about code, techniques, or comments!</p>
+              <div id="the-gist" class="section level2">
+<h2>The gist</h2>
+<p>Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?</p>
+<p>More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?</p>
+<p>Today we’ll dive into a few processes we need to go through before the data are ready for analysis:</p>
+<ul>
+<li>Adding information about future prices<br />
+</li>
+<li>Preprocessing and cleaning<br />
+</li>
+<li>Splitting the data into training and test sets<br />
+</li>
+<li>A few of the algorithms we can try out</li>
+</ul>
+</div>
+<div id="data-things---loading-in-and-initial-exminations" class="section level2">
+<h2>Data things - loading in and initial exminations</h2>
+<pre class="r"><code>#Packages we&#39;ll need
+library(caret)
+library(tidyverse)
+library(lubridate)
+
+
+#Snagging the sort-of-cleaned data (remember last week&#39;s post) from github
+bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&quot;)
+
+#Lots of warning, but it works. Just ignore them - let&#39;s look at the data
+glimpse(bean_master_import)</code></pre>
+<pre><code>## Observations: 8,407
+## Variables: 19
+## $ date                    &lt;date&gt; 1987-01-13, 1987-01-21, 1987-01-27, 1...
+## $ class                   &lt;chr&gt; &quot;Pinto&quot;, &quot;Pinto&quot;, &quot;Pinto&quot;, &quot;Pinto&quot;, &quot;P...
+## $ price                   &lt;dbl&gt; 18.62, 18.25, 18.12, 18.12, 18.49, 18....
+## $ weekly_avg_price        &lt;dbl&gt; 18.62, 18.25, 18.12, 18.12, 18.49, 18....
+## $ future_date             &lt;date&gt; 1987-07-13, 1987-07-21, 1987-07-27, 1...
+## $ future_weekly_avg_price &lt;dbl&gt; 20.25, 20.25, 20.00, 19.25, 18.75, 18....
+## $ whole_market_avg        &lt;dbl&gt; 29.18700, 28.85000, 28.89900, 28.81200...
+## $ whole_market_sum        &lt;dbl&gt; 291.87, 288.50, 288.99, 288.12, 239.99...
+## $ class_market_share      &lt;dbl&gt; 0.06379553, 0.06325823, 0.06270113, 0....
+## $ planted                 &lt;dbl&gt; 637.6, 637.6, 637.6, 637.6, 637.6, 637...
+## $ harvested               &lt;dbl&gt; 617.1, 617.1, 617.1, 617.1, 617.1, 617...
+## $ yield                   &lt;int&gt; 1549, 1549, 1549, 1549, 1549, 1549, 15...
+## $ production              &lt;int&gt; 9560, 9560, 9560, 9560, 9560, 9560, 95...
+## $ season_avg_price        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+## $ production_value        &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+## $ year                    &lt;dbl&gt; 1987, 1987, 1987, 1987, 1987, 1987, 19...
+## $ month                   &lt;chr&gt; &quot;January&quot;, &quot;January&quot;, &quot;January&quot;, &quot;Febr...
+## $ imports                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+## $ season_total            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...</code></pre>
+</div>
+<div id="back-to-the-future" class="section level2">
+<h2>Back to the future</h2>
+<p>So, now that we have our data into our working space as a nice and tidy tibble, we want to do a few things before we start doing some prediction.<br />
+The first is that we want to generate future data - so that for a given date, we know what the average monthly price is 6 months in the future.</p>
+<p>Why 6 months in the future, you might ask? Well, the time interval can be changed to anything we want, but this represents a typical turn-around time for brokers in the market. You’ll see in the code below that it’s fairly easy to build models that would predict for different time periods into the future.</p>
+<p>Why average monthly price? Some of our data down the line (and on some pieces of this project that I’m working on now) only give us data on monthly-scales, not the nice weekly scales present in this data. Yes, it’s a bit a bigger temporal grain-size, but, as I’ll show you, the models still do an excellent job.</p>
+<p>If you look at the data summary above, you can see that future_date and future_weekly_avg_price are already in this data frame… here is how to generate the future date using the absolutely fantastic <a href="http://lubridate.tidyverse.org">lubridate package</a>.</p>
+<pre class="r"><code>bean_master_import$future_date = bean_master$date + months(6)
+bean_master_import$week = week(bean_master$date)</code></pre>
+<p>Next, we add the future month and year, and calculate monthly average prices. In the first step, I’m adding the month and year to the original dataframe, and in the second, I’m making a new dataframe that we’re going to join back to the first to get our future average monthly prices associated with dates.</p>
+<pre class="r"><code>#Adding future month and year
+bean_master_import = bean_master_import %&gt;%
+  mutate(future_month = month(future_date, label = TRUE, abbr = FALSE),
+         future_year = year(future_date)) 
+
+#Making the dataframe we&#39;re going to join
+bean_master_future_to_join = bean_master_import %&gt;%
+  group_by(class, year, month) %&gt;%
+  summarize(monthly_average_price = mean(price))
+
+#joining it back on, but with the key column set to future date instead of date
+bean_master_import = bean_master_import %&gt;%
+  inner_join(bean_master_future_to_join, by = c(&quot;future_year&quot; = &quot;year&quot;, &quot;future_month&quot; = &quot;month&quot;, &quot;class&quot; = &quot;class&quot;)) %&gt;%
+  rename(future_monthly_average_price = monthly_average_price) </code></pre>
+<pre><code>## Warning: Column `future_month`/`month` joining factor and character vector,
+## coercing into character vector</code></pre>
+<pre class="r"><code>#Looks reasonable
+head(bean_master_import$future_monthly_average_price, n = 20)</code></pre>
+<pre><code>##  [1] 20.23250 20.23250 20.23250 18.59500 18.59500 18.59500 18.59500
+##  [8] 18.03000 18.03000 18.03000 18.03000 17.62667 17.62667 17.62667
+## [15] 17.62667 16.71750 16.71750 16.71750 16.71750 16.34250</code></pre>
+<pre class="r"><code>#This looks reasonable too
+select(bean_master_import, future_monthly_average_price, price)</code></pre>
+<pre><code>## # A tibble: 7,625 x 2
+##    future_monthly_average_price price
+##                           &lt;dbl&gt; &lt;dbl&gt;
+##  1                         20.2  18.6
+##  2                         20.2  18.2
+##  3                         20.2  18.1
+##  4                         18.6  18.1
+##  5                         18.6  18.5
+##  6                         18.6  18.2
+##  7                         18.6  18.2
+##  8                         18.0  18.0
+##  9                         18.0  17.4
+## 10                         18.0  17.7
+## # ... with 7,615 more rows</code></pre>
+<p>Just a bit more cleaning - getting rid of some columns we won’t need and changing month and day to factors.</p>
+<pre class="r"><code>#Cleaning up the dataframe a bit
+bean_master_import = bean_master_import %&gt;%
+  select(-future_date, -future_weekly_avg_price, -year) %&gt;%
+  mutate(day = day(date))
+
+bean_master_import$future_month = factor(bean_master_import$future_month)
+bean_master_import$day = factor(bean_master_import$day)
+bean_master_import$class = factor(bean_master_import$class)
+
+bean_master_import$imports = as.numeric(bean_master_import$imports)</code></pre>
+</div>
+<div id="preprocessing" class="section level2">
+<h2>Preprocessing</h2>
+<p>Ok, now we can start preprocessing the data before we feed it into our ML algorithms. Preprocessing is essential because:</p>
+<ol style="list-style-type: decimal">
+<li>It get’s rid of NAs, which are the scurge of ML algorithms</li>
+<li><a href="https://en.wikipedia.org/wiki/Feature_scaling">It scales and centers your data</a>, which means that all the variables have more equal weight on models</li>
+</ol>
+<p>It’s also super easy with the <a href="http://topepo.github.io/caret/index.html">caret</a> package.</p>
+<pre class="r"><code>#Setting seed for reproducibility
+set.seed(42)
+
+#First, let&#39;s cut it down to the explanatory variables we want
+bean_master_import_slim = bean_master_import %&gt;%
+  select(date, class, price, whole_market_avg, whole_market_sum, 
+         class_market_share, planted, harvested, yield, production,
+         month, imports)
+
+#Preprocessing
+preProc2 = preProcess(bean_master_import_slim, method = c(&quot;center&quot;, &quot;scale&quot;, &quot;knnImpute&quot;, &quot;zv&quot;))
+preProc2</code></pre>
+<pre><code>## Created from 2467 samples and 12 variables
+## 
+## Pre-processing:
+##   - centered (9)
+##   - ignored (3)
+##   - 5 nearest neighbor imputation (9)
+##   - scaled (9)</code></pre>
+<p>It’s worth discussing what’s going on here.</p>
+<p>The <code>preProcess()</code> function from caret takes a dataframe, and then in the methods argument you tell it what kind of preprocessing you want it to do. Here, I’ve centered and scaled the variabels (“center”, “scale”), used k-nearest neighbors (“knnImpute”) to impute missing values, and gotten rid of any columns that have zero variance (“zv”) (aren’t helpful).</p>
+<p>You might expect that when we call preProc2, we get the data, but actually… we don’t. caret has just built a framework for preprocessing the data, so we’ll need to apply it in the next step. However, calling the object does give us nice information about the number of variables that were ignored, centered etc.</p>
+<pre class="r"><code>#Doing the preprocessing
+bean_ML_import_pp = predict(preProc2, bean_master_import_slim)
+
+#glimpsing results
+glimpse(bean_ML_import_pp)</code></pre>
+<pre><code>## Observations: 7,625
+## Variables: 12
+## $ date               &lt;date&gt; 1987-01-13, 1987-01-21, 1987-01-27, 1987-0...
+## $ class              &lt;fct&gt; Pinto, Pinto, Pinto, Pinto, Pinto, Pinto, P...
+## $ price              &lt;dbl&gt; -1.454833, -1.501566, -1.517986, -1.517986,...
+## $ whole_market_avg   &lt;dbl&gt; -0.4745942, -0.5321818, -0.5238085, -0.5386...
+## $ whole_market_sum   &lt;dbl&gt; -0.7998774, -0.8469529, -0.8401081, -0.8522...
+## $ class_market_share &lt;dbl&gt; -0.59721573, -0.60937574, -0.62198404, -0.6...
+## $ planted            &lt;dbl&gt; 1.748686, 1.748686, 1.748686, 1.748686, 1.7...
+## $ harvested          &lt;dbl&gt; 1.860342, 1.860342, 1.860342, 1.860342, 1.8...
+## $ yield              &lt;dbl&gt; -0.5854438, -0.5854438, -0.5854438, -0.5854...
+## $ production         &lt;dbl&gt; 1.827526, 1.827526, 1.827526, 1.827526, 1.8...
+## $ month              &lt;chr&gt; &quot;January&quot;, &quot;January&quot;, &quot;January&quot;, &quot;February&quot;...
+## $ imports            &lt;dbl&gt; 1.923680, 1.923680, 1.923680, 1.923680, 1.9...</code></pre>
+<pre class="r"><code>bean_ML_import_pp$month = factor(bean_ML_import_pp$month)
+
+#binding the response and dates variable back on
+bean_ML_import_pp$future_monthly_avg_price = bean_master_import$future_monthly_average_price</code></pre>
+<p>And finally, we get to split our data into training and test sets (check out the <a href="https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/">last post</a> for info on this as a tenant of machine learning.</p>
+<p>Caret to the rescue again - makes this super-easy.</p>
+<pre class="r"><code>#Training and test sets
+index1 = createDataPartition(bean_ML_import_pp$future_monthly_avg_price, p = 0.80, list = FALSE)
+bean_ML_import_train = bean_ML_import_pp[index1,]
+bean_ML_import_test = bean_ML_import_pp[-index1,]</code></pre>
+<p>The <code>createDataPartition()</code> function is doing the work here. We’re telling it what the response variable is (here future monthly average price), what we want our data split to be (here 80% training and 20% test), and that we don’t want the output in the form of a list. This gives us a random sample index, which we can then apply to our data frame to break it into training and test sets.</p>
+<p>So, now that we have fully preprocessed training and test sets, we’re ready for the next step - jumping into some algorithms. I’ll save this for the next post (this is already super-long), but as a quick preview, we’ll run a variety of models to figure out what does the best job of predicting future prices:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://en.wikipedia.org/wiki/Linear_regression">Linear regression</a></li>
+<li><a href="https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/">CART models</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Random_forest">Random forests</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Artificial_neural_network">Artificial Neural Nets</a></li>
+</ol>
 <p>Cheers!</p>
+</div>
 
               
             </div>
@@ -279,9 +451,9 @@ of Health (NIH), but as that position is coming to a close, am on the job market
                     
   <a class="tag tag--primary tag--small" href="https://keatonwilson.github.io/tags/beans/">beans</a>
 
-  <a class="tag tag--primary tag--small" href="https://keatonwilson.github.io/tags/vocs/">vocs</a>
+  <a class="tag tag--primary tag--small" href="https://keatonwilson.github.io/tags/markets/">markets</a>
 
-  <a class="tag tag--primary tag--small" href="https://keatonwilson.github.io/tags/science/">science</a>
+  <a class="tag tag--primary tag--small" href="https://keatonwilson.github.io/tags/prediction/">prediction</a>
 
                   </div>
                 
@@ -294,7 +466,7 @@ of Health (NIH), but as that position is coming to a close, am on the job market
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/" data-tooltip="An overview of the bean project">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -302,7 +474,7 @@ of Health (NIH), but as that position is coming to a close, am on the job market
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/" data-tooltip="The ecologist jumps into the deep, scary waters of machine learning...">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -320,19 +492,19 @@ of Health (NIH), but as that position is coming to a close, am on the job market
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -380,7 +552,7 @@ of Health (NIH), but as that position is coming to a close, am on the job market
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/" data-tooltip="An overview of the bean project">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -388,7 +560,7 @@ of Health (NIH), but as that position is coming to a close, am on the job market
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/" data-tooltip="The ecologist jumps into the deep, scary waters of machine learning...">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -406,19 +578,19 @@ of Health (NIH), but as that position is coming to a close, am on the job market
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -448,19 +620,19 @@ of Health (NIH), but as that position is coming to a close, am on the job market
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F03%2Fintroduction-a-more-involved-hello-world%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F04%2Fpreprocessing-bean-data-on-the-road-to-machine-learning%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F03%2Fintroduction-a-more-involved-hello-world%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F04%2Fpreprocessing-bean-data-on-the-road-to-machine-learning%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F03%2Fintroduction-a-more-involved-hello-world%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F04%2Fpreprocessing-bean-data-on-the-road-to-machine-learning%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -654,9 +826,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/keatonwilson.github.io\/2018\/03\/introduction-a-more-involved-hello-world\/';
+          this.page.url = 'https:\/\/keatonwilson.github.io\/2018\/04\/preprocessing-bean-data-on-the-road-to-machine-learning\/';
           
-            this.page.identifier = '\/2018\/03\/introduction-a-more-involved-hello-world\/'
+            this.page.identifier = '\/2018\/04\/preprocessing-bean-data-on-the-road-to-machine-learning\/'
           
         };
         (function() {
