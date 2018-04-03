@@ -6,10 +6,20 @@
     <description>Recent content on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://keatonwilson.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Predicting Bean Markets with Machine Learning</title>
+      <link>https://keatonwilson.github.io/2018/04/predicting-bean-markets-with-machine-learning/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://keatonwilson.github.io/2018/04/predicting-bean-markets-with-machine-learning/</guid>
+      <description>The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
+More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?</description>
+    </item>
     
     <item>
       <title>The ecologist jumps into the deep, scary waters of machine learning...</title>

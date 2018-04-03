@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>An overview of the bean project</title>
+    <title>Predicting Bean Markets with Machine Learning</title>
     <meta name="author" content="Keaton Wilson">
     <meta name="keywords" content="">
 
@@ -30,15 +30,18 @@
     
 
     
-    <meta name="description" content="Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.">
-    <meta property="og:description" content="Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.">
+    <meta name="description" content="The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
+More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?">
+    <meta property="og:description" content="The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
+More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="An overview of the bean project">
-    <meta property="og:url" content="/2018/03/an-overview-of-the-bean-project/">
+    <meta property="og:title" content="Predicting Bean Markets with Machine Learning">
+    <meta property="og:url" content="/2018/04/predicting-bean-markets-with-machine-learning/">
     <meta property="og:site_name" content="Keaton Wilson">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Keaton Wilson">
-    <meta name="twitter:description" content="Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.">
+    <meta name="twitter:description" content="The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
+More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?">
     
       <meta name="twitter:creator" content="@keatonwilson">
     
@@ -225,15 +228,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      An overview of the bean project
+      Predicting Bean Markets with Machine Learning
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-03-19T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-04-03T00:00:00Z">
         
-  March 19, 2018
+  April 3, 2018
 
       </time>
     
@@ -242,9 +245,11 @@
   
     <span>in</span>
     
+      <a class="category-link" href="https://keatonwilson.github.io/categories/bean-project">bean project</a>, 
+    
       <a class="category-link" href="https://keatonwilson.github.io/categories/data-science">data science</a>, 
     
-      <a class="category-link" href="https://keatonwilson.github.io/categories/bean-project">bean project</a>
+      <a class="category-link" href="https://keatonwilson.github.io/categories/machine-learning">machine learning</a>
     
   
 
@@ -254,29 +259,183 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <div id="beans" class="section level3">
-<h3>Beans</h3>
-<p>I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.</p>
-<p>Immediately, I thought about trying to figure out whether I could use some modern machine learning algorithms to predict market prices in the future. There is a fair amount of speculation in the market, but most people in the industry (according my inside source) speculate based on acquired knowledge, not through quantitative models. I wanted to see if I could build a model that predicts future prices, and was interested in the level of accuracy a model could achieve in a system that has the level of volatility that beans markets do.</p>
-<p>I’m going to walk through my process of this project in a series of posts - from wrangling messy data all the way through building some machine learning models, tuning these models and making predictions on brand new data.</p>
-<p>First things first though, we need some data.</p>
+              <div id="the-gist" class="section level2">
+<h2>The gist</h2>
+<p>Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?</p>
+<p>More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?</p>
+<p>Today we’ll dive into a few processes we need to go through before the data are ready for analysis:</p>
+<ul>
+<li>Adding information about future prices<br />
+</li>
+<li>Preprocessing and cleaning<br />
+</li>
+<li>Splitting the data into training and test sets<br />
+</li>
+<li>A few of the algorithms we can try out</li>
+</ul>
 </div>
-<div id="historic-bean-data-and-where-to-find-it" class="section level3">
-<h3>Historic bean data and where to find it</h3>
-<p>Once I had a plan in mind, I started scouring the internet for data. Certainly, there must be some agency that tracks and records prices of different varieties of beans, other useful variables (production levels by year, how much was imported and exported, etc.), right?! And this data will hopefully be in a really nice, useable form for us to import into R and start doing some analysis, right?!</p>
-<p>Nerp.</p>
-<p>Here is the best source I could find <a href="http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1394">ERS USDA</a>.</p>
-<p>You can see three things immediately:<br />
-1. There are a lot of data available <strong>YAY</strong><br />
-2. They’re all in excel sheets <strong>booo</strong><br />
-3. There isn’t data until present-day, but from 1980-2010.</p>
-<p>Not only that, but many of the types of data I needed were buried in Excel files with multiple sheets and crazy formatting.</p>
-<p>It looks like I’m in for a lesson in munging (or cleaning).</p>
+<div id="data-things---loading-in-and-initial-exminations" class="section level2">
+<h2>Data things - loading in and initial exminations</h2>
+<pre class="r"><code>#Packages we&#39;ll need
+library(caret)
+library(tidyverse)
+library(lubridate)
+
+
+#Snagging the sort-of-cleaned data (remember last week&#39;s post) from github
+bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&quot;)
+
+#Lots of warning, but it works. Just ignore them - let&#39;s look at the data
+glimpse(bean_master_import)</code></pre>
+<pre><code>## Observations: 8,407
+## Variables: 19
+## $ date                    &lt;date&gt; 1987-01-13, 1987-01-21, 1987-01-27, 1...
+## $ class                   &lt;chr&gt; &quot;Pinto&quot;, &quot;Pinto&quot;, &quot;Pinto&quot;, &quot;Pinto&quot;, &quot;P...
+## $ price                   &lt;dbl&gt; 18.62, 18.25, 18.12, 18.12, 18.49, 18....
+## $ weekly_avg_price        &lt;dbl&gt; 18.62, 18.25, 18.12, 18.12, 18.49, 18....
+## $ future_date             &lt;date&gt; 1987-07-13, 1987-07-21, 1987-07-27, 1...
+## $ future_weekly_avg_price &lt;dbl&gt; 20.25, 20.25, 20.00, 19.25, 18.75, 18....
+## $ whole_market_avg        &lt;dbl&gt; 29.18700, 28.85000, 28.89900, 28.81200...
+## $ whole_market_sum        &lt;dbl&gt; 291.87, 288.50, 288.99, 288.12, 239.99...
+## $ class_market_share      &lt;dbl&gt; 0.06379553, 0.06325823, 0.06270113, 0....
+## $ planted                 &lt;dbl&gt; 637.6, 637.6, 637.6, 637.6, 637.6, 637...
+## $ harvested               &lt;dbl&gt; 617.1, 617.1, 617.1, 617.1, 617.1, 617...
+## $ yield                   &lt;int&gt; 1549, 1549, 1549, 1549, 1549, 1549, 15...
+## $ production              &lt;int&gt; 9560, 9560, 9560, 9560, 9560, 9560, 95...
+## $ season_avg_price        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+## $ production_value        &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+## $ year                    &lt;dbl&gt; 1987, 1987, 1987, 1987, 1987, 1987, 19...
+## $ month                   &lt;chr&gt; &quot;January&quot;, &quot;January&quot;, &quot;January&quot;, &quot;Febr...
+## $ imports                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+## $ season_total            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...</code></pre>
 </div>
-<div id="conclusions" class="section level3">
-<h3>Conclusions</h3>
-<p>In the next post, I’ll outline the first steps I used to pull out useful data from awful Excel Files, and get everything into one dataframe that’s ready for analysis.</p>
-<p>The repository for this entire project (including the data), can be found on <a href="https://github.com/keatonwilson/beans">GitHub</a>.</p>
+<div id="back-to-the-future" class="section level2">
+<h2>Back to the future</h2>
+<p>So, now that we have our data into our working space as a nice and tidy tibble, we want to do a few things before we start doing some prediction.<br />
+The first is that we want to generate future data - so that for a given date, we know what the average monthly price is 6 months in the future.</p>
+<p>Why 6 months in the future, you might ask? Well, the time interval can be changed to anything we want, but this represents a typical turn-around time for brokers in the market. You’ll see in the code below that it’s fairly easy to build models that would predict for different time periods into the future.</p>
+<p>Why average monthly price? Some of our data down the line (and on some pieces of this project that I’m working on now) only give us data on monthly-scales, not the nice weekly scales present in this data. Yes, it’s a bit a bigger temporal grain-size, but, as I’ll show you, the models still do an excellent job.</p>
+<p>If you look at the data summary above, you can see that future_date and future_weekly_avg_price are already in this data frame… here is how to generate the future date using the absolutely fantastic <a href="http://lubridate.tidyverse.org">lubridate package</a>.</p>
+<pre class="r"><code>bean_master_import$future_date = bean_master$date + months(6)
+bean_master_import$week = week(bean_master$date)</code></pre>
+<p>Next, we add the future month and year, and calculate monthly average prices. In the first step, I’m adding the month and year to the original dataframe, and in the second, I’m making a new dataframe that we’re going to join back to the first to get our future average monthly prices associated with dates.</p>
+<pre class="r"><code>#Adding future month and year
+bean_master_import = bean_master_import %&gt;%
+  mutate(future_month = month(future_date, label = TRUE, abbr = FALSE),
+         future_year = year(future_date)) 
+
+#Making the dataframe we&#39;re going to join
+bean_master_future_to_join = bean_master_import %&gt;%
+  group_by(class, year, month) %&gt;%
+  summarize(monthly_average_price = mean(price))
+
+#joining it back on, but with the key column set to future date instead of date
+bean_master_import = bean_master_import %&gt;%
+  inner_join(bean_master_future_to_join, by = c(&quot;future_year&quot; = &quot;year&quot;, &quot;future_month&quot; = &quot;month&quot;, &quot;class&quot; = &quot;class&quot;)) %&gt;%
+  rename(future_monthly_average_price = monthly_average_price) </code></pre>
+<pre><code>## Warning: Column `future_month`/`month` joining factor and character vector,
+## coercing into character vector</code></pre>
+<pre class="r"><code>#Looks reasonable
+head(bean_master_import$future_monthly_average_price, n = 20)</code></pre>
+<pre><code>##  [1] 20.23250 20.23250 20.23250 18.59500 18.59500 18.59500 18.59500
+##  [8] 18.03000 18.03000 18.03000 18.03000 17.62667 17.62667 17.62667
+## [15] 17.62667 16.71750 16.71750 16.71750 16.71750 16.34250</code></pre>
+<pre class="r"><code>#This looks reasonable too
+select(bean_master_import, future_monthly_average_price, price)</code></pre>
+<pre><code>## # A tibble: 7,625 x 2
+##    future_monthly_average_price price
+##                           &lt;dbl&gt; &lt;dbl&gt;
+##  1                         20.2  18.6
+##  2                         20.2  18.2
+##  3                         20.2  18.1
+##  4                         18.6  18.1
+##  5                         18.6  18.5
+##  6                         18.6  18.2
+##  7                         18.6  18.2
+##  8                         18.0  18.0
+##  9                         18.0  17.4
+## 10                         18.0  17.7
+## # ... with 7,615 more rows</code></pre>
+<p>Just a bit more cleaning - getting rid of some columns we won’t need and changing month and day to factors.</p>
+<pre class="r"><code>#Cleaning up the dataframe a bit
+bean_master_import = bean_master_import %&gt;%
+  select(-future_date, -future_weekly_avg_price, -year) %&gt;%
+  mutate(day = day(date))
+
+bean_master_import$future_month = factor(bean_master_import$future_month)
+bean_master_import$day = factor(bean_master_import$day)
+bean_master_import$class = factor(bean_master_import$class)
+
+bean_master_import$imports = as.numeric(bean_master_import$imports)</code></pre>
+</div>
+<div id="preprocessing" class="section level2">
+<h2>Preprocessing</h2>
+<p>Ok, now we can start preprocessing the data before we feed it into our ML algorithms. Preprocessing is essential because:</p>
+<ol style="list-style-type: decimal">
+<li>It get’s rid of NAs, which are the scurge of ML algorithms</li>
+<li><a href="https://en.wikipedia.org/wiki/Feature_scaling">It scales and centers your data</a>, which means that all the variables have more equal weight on models</li>
+</ol>
+<p>It’s also super easy with the <a href="http://topepo.github.io/caret/index.html">caret</a> package.</p>
+<pre class="r"><code>#Setting seed for reproducibility
+set.seed(42)
+
+#First, let&#39;s cut it down to the explanatory variables we want
+bean_master_import_slim = bean_master_import %&gt;%
+  select(date, class, price, whole_market_avg, whole_market_sum, 
+         class_market_share, planted, harvested, yield, production,
+         month, imports)
+
+#Preprocessing
+preProc2 = preProcess(bean_master_import_slim, method = c(&quot;center&quot;, &quot;scale&quot;, &quot;knnImpute&quot;, &quot;zv&quot;))
+preProc2</code></pre>
+<pre><code>## Created from 2467 samples and 12 variables
+## 
+## Pre-processing:
+##   - centered (9)
+##   - ignored (3)
+##   - 5 nearest neighbor imputation (9)
+##   - scaled (9)</code></pre>
+<p>It’s worth discussing what’s going on here.</p>
+<p>The <code>preProcess()</code> function from caret takes a dataframe, and then in the methods argument you tell it what kind of preprocessing you want it to do. Here, I’ve centered and scaled the variabels (“center”, “scale”), used k-nearest neighbors (“knnImpute”) to impute missing values, and gotten rid of any columns that have zero variance (“zv”) (aren’t helpful).</p>
+<p>You might expect that when we call preProc2, we get the data, but actually… we don’t. caret has just built a framework for preprocessing the data, so we’ll need to apply it in the next step. However, calling the object does give us nice information about the number of variables that were ignored, centered etc.</p>
+<pre class="r"><code>#Doing the preprocessing
+bean_ML_import_pp = predict(preProc2, bean_master_import_slim)
+
+#glimpsing results
+glimpse(bean_ML_import_pp)</code></pre>
+<pre><code>## Observations: 7,625
+## Variables: 12
+## $ date               &lt;date&gt; 1987-01-13, 1987-01-21, 1987-01-27, 1987-0...
+## $ class              &lt;fct&gt; Pinto, Pinto, Pinto, Pinto, Pinto, Pinto, P...
+## $ price              &lt;dbl&gt; -1.454833, -1.501566, -1.517986, -1.517986,...
+## $ whole_market_avg   &lt;dbl&gt; -0.4745942, -0.5321818, -0.5238085, -0.5386...
+## $ whole_market_sum   &lt;dbl&gt; -0.7998774, -0.8469529, -0.8401081, -0.8522...
+## $ class_market_share &lt;dbl&gt; -0.59721573, -0.60937574, -0.62198404, -0.6...
+## $ planted            &lt;dbl&gt; 1.748686, 1.748686, 1.748686, 1.748686, 1.7...
+## $ harvested          &lt;dbl&gt; 1.860342, 1.860342, 1.860342, 1.860342, 1.8...
+## $ yield              &lt;dbl&gt; -0.5854438, -0.5854438, -0.5854438, -0.5854...
+## $ production         &lt;dbl&gt; 1.827526, 1.827526, 1.827526, 1.827526, 1.8...
+## $ month              &lt;chr&gt; &quot;January&quot;, &quot;January&quot;, &quot;January&quot;, &quot;February&quot;...
+## $ imports            &lt;dbl&gt; 1.923680, 1.923680, 1.923680, 1.923680, 1.9...</code></pre>
+<pre class="r"><code>bean_ML_import_pp$month = factor(bean_ML_import_pp$month)
+
+#binding the response and dates variable back on
+bean_ML_import_pp$future_monthly_avg_price = bean_master_import$future_monthly_average_price</code></pre>
+<p>And finally, we get to split our data into training and test sets (check out the <a href="https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/">last post</a> for info on this as a tenant of machine learning.</p>
+<p>Caret to the rescue again - makes this super-easy.</p>
+<pre class="r"><code>#Training and test sets
+index1 = createDataPartition(bean_ML_import_pp$future_monthly_avg_price, p = 0.80, list = FALSE)
+bean_ML_import_train = bean_ML_import_pp[index1,]
+bean_ML_import_test = bean_ML_import_pp[-index1,]</code></pre>
+<p>The <code>createDataPartition()</code> function is doing the work here. We’re telling it what the response variable is (here future monthly average price), what we want our data split to be (here 80% training and 20% test), and that we don’t want the output in the form of a list. This gives us a random sample index, which we can then apply to our data frame to break it into training and test sets.</p>
+<p>So, now that we have fully preprocessed training and test sets, we’re ready for the next step - jumping into some algorithms. I’ll save this for the next post (this is already super-long), but as a quick preview, we’ll run a variety of models to figure out what does the best job of predicting future prices:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://en.wikipedia.org/wiki/Linear_regression">Linear regression</a></li>
+<li><a href="https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/">CART models</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Random_forest">Random forests</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Artificial_neural_network">Artificial Neural Nets</a></li>
+</ol>
+<p>Cheers!</p>
 </div>
 
               
@@ -296,8 +455,6 @@
 
   <a class="tag tag--primary tag--small" href="https://keatonwilson.github.io/tags/prediction/">prediction</a>
 
-  <a class="tag tag--primary tag--small" href="https://keatonwilson.github.io/tags/munging/">munging</a>
-
                   </div>
                 
               
@@ -309,7 +466,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/03/bean-munging-and-excel-wrangling/" data-tooltip="Bean munging and Excel Wrangling">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -317,7 +474,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/" data-tooltip="Introduction (a more involved ‘hello world’). ">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/" data-tooltip="The ecologist jumps into the deep, scary waters of machine learning...">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -335,19 +492,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://keatonwilson.github.io/2018/04/predicting-bean-markets-with-machine-learning/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://keatonwilson.github.io/2018/04/predicting-bean-markets-with-machine-learning/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://keatonwilson.github.io/2018/04/predicting-bean-markets-with-machine-learning/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -395,7 +552,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/03/bean-munging-and-excel-wrangling/" data-tooltip="Bean munging and Excel Wrangling">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -403,7 +560,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/" data-tooltip="Introduction (a more involved ‘hello world’). ">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/" data-tooltip="The ecologist jumps into the deep, scary waters of machine learning...">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -421,19 +578,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://keatonwilson.github.io/2018/04/predicting-bean-markets-with-machine-learning/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://keatonwilson.github.io/2018/04/predicting-bean-markets-with-machine-learning/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://keatonwilson.github.io/2018/04/predicting-bean-markets-with-machine-learning/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -463,19 +620,19 @@
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F03%2Fan-overview-of-the-bean-project%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F04%2Fpredicting-bean-markets-with-machine-learning%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F03%2Fan-overview-of-the-bean-project%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F04%2Fpredicting-bean-markets-with-machine-learning%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F03%2Fan-overview-of-the-bean-project%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F04%2Fpredicting-bean-markets-with-machine-learning%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -669,9 +826,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/keatonwilson.github.io\/2018\/03\/an-overview-of-the-bean-project\/';
+          this.page.url = 'https:\/\/keatonwilson.github.io\/2018\/04\/predicting-bean-markets-with-machine-learning\/';
           
-            this.page.identifier = '\/2018\/03\/an-overview-of-the-bean-project\/'
+            this.page.identifier = '\/2018\/04\/predicting-bean-markets-with-machine-learning\/'
           
         };
         (function() {
