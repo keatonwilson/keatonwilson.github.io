@@ -1,0 +1,982 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
+    <title>Bean Market Predictions using Machine Learning Algorithms</title>
+    <meta name="author" content="Keaton Wilson">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="https://keatonwilson.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="Goals As I’ve discussed in earlier posts, the basic premise of this project was to use a nice (but messy) dataset from the USDA on domestic bean markets to explore a variety of different avenues of analysis, visualization and data exploration. One of the main goals of this project was to see if I could build some machine learning models that do a good job of predicting future prices of different classes of beans.">
+    <meta property="og:description" content="Goals As I’ve discussed in earlier posts, the basic premise of this project was to use a nice (but messy) dataset from the USDA on domestic bean markets to explore a variety of different avenues of analysis, visualization and data exploration. One of the main goals of this project was to see if I could build some machine learning models that do a good job of predicting future prices of different classes of beans.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Bean Market Predictions using Machine Learning Algorithms">
+    <meta property="og:url" content="/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+    <meta property="og:site_name" content="Keaton Wilson">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Keaton Wilson">
+    <meta name="twitter:description" content="Goals As I’ve discussed in earlier posts, the basic premise of this project was to use a nice (but messy) dataset from the USDA on domestic bean markets to explore a variety of different avenues of analysis, visualization and data exploration. One of the main goals of this project was to see if I could build some machine learning models that do a good job of predicting future prices of different classes of beans.">
+    
+      <meta name="twitter:creator" content="@keatonwilson">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://keatonwilson.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-116941718-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://keatonwilson.github.io/">Keaton Wilson</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://keatonwilson.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://keatonwilson.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Keaton Wilson</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>Ecologist, data scientist, and creator</strong>. Over a decade of experience performing independent and collaborative research and qualitative and quantitative data analysis to generate thoughtful, intuitive insights that engage a broad audience. Creative and novel approaches to data visualization, analysis and design.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://keatonwilson.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://keatonwilson.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://keatonwilson.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://keatonwilson.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://keatonwilson.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/keatonwilson" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.twitter.com/keatonwilson" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://www.keatonwilson.net" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-"></i>
+      
+      <span class="sidebar-button-desc">Main Website</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://keatonwilson.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Bean Market Predictions using Machine Learning Algorithms
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-04-21T00:00:00Z">
+        
+  April 21, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://keatonwilson.github.io/categories/bean-project">bean project</a>, 
+    
+      <a class="category-link" href="https://keatonwilson.github.io/categories/data-science">data science</a>, 
+    
+      <a class="category-link" href="https://keatonwilson.github.io/categories/machine-learning">machine learning</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <div id="goals" class="section level3">
+<h3>Goals</h3>
+<p>As I’ve discussed in earlier posts, the basic premise of this project was to use a nice (but messy) dataset from the USDA on domestic bean markets to explore a variety of different avenues of analysis, visualization and data exploration. One of the main goals of this project was to see if I could build some machine learning models that do a good job of predicting future prices of different classes of beans.</p>
+<p>In past posts we’ve worked to <a href="keatonwilson.github.io/2018/03/bean-munging-and-excel-wrangling/">import messy data from Excel files</a>, and <a href="keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">preprocessing data using the caret package</a> to make sure it’s ready for running some building, testing and tuning some machine learning algorithms.</p>
+<p>We’re going to start with the preprocessed data set outlined in my last post. Let’s give it a lookover to remind ourselves what’s in it (and load up our packages)</p>
+<pre class="r"><code>library(tidyverse)
+library(caret)
+
+glimpse(bean_ML_import_train)</code></pre>
+<pre><code>## Observations: 6,101
+## Variables: 13
+## $ date                     &lt;date&gt; 1987-01-13, 1987-01-21, 1987-01-27, ...
+## $ class                    &lt;fct&gt; Pinto, Pinto, Pinto, Pinto, Pinto, Pi...
+## $ price                    &lt;dbl&gt; -1.454833, -1.501566, -1.517986, -1.5...
+## $ whole_market_avg         &lt;dbl&gt; -0.4745942, -0.5321818, -0.5238085, -...
+## $ whole_market_sum         &lt;dbl&gt; -0.7998774, -0.8469529, -0.8401081, -...
+## $ class_market_share       &lt;dbl&gt; -0.59721573, -0.60937574, -0.62198404...
+## $ planted                  &lt;dbl&gt; 1.748686, 1.748686, 1.748686, 1.74868...
+## $ harvested                &lt;dbl&gt; 1.860342, 1.860342, 1.860342, 1.86034...
+## $ yield                    &lt;dbl&gt; -0.5854438, -0.5854438, -0.5854438, -...
+## $ production               &lt;dbl&gt; 1.827526, 1.827526, 1.827526, 1.82752...
+## $ month                    &lt;fct&gt; January, January, January, February, ...
+## $ imports                  &lt;dbl&gt; 1.923680, 1.923680, 1.923680, 1.92368...
+## $ future_monthly_avg_price &lt;dbl&gt; 20.23250, 20.23250, 20.23250, 18.5950...</code></pre>
+<pre class="r"><code>glimpse(bean_ML_import_test)</code></pre>
+<pre><code>## Observations: 1,524
+## Variables: 13
+## $ date                     &lt;date&gt; 1987-03-10, 1987-09-01, 1987-09-09, ...
+## $ class                    &lt;fct&gt; Pinto, Pinto, Pinto, Pinto, Pinto, Pi...
+## $ price                    &lt;dbl&gt; -1.6038740, -1.5255645, -1.5647192, -...
+## $ whole_market_avg         &lt;dbl&gt; -1.08451367, -1.48155901, -1.73468560...
+## $ whole_market_sum         &lt;dbl&gt; -1.656314940, -2.599220377, -1.829949...
+## $ class_market_share       &lt;dbl&gt; -0.3291083, 0.4656110, -0.1993913, 0....
+## $ planted                  &lt;dbl&gt; 1.748686, 1.748686, 1.748686, 1.74868...
+## $ harvested                &lt;dbl&gt; 1.860342, 1.860342, 1.860342, 1.86034...
+## $ yield                    &lt;dbl&gt; -0.5854438, -0.5854438, -0.5854438, -...
+## $ production               &lt;dbl&gt; 1.827526, 1.827526, 1.827526, 1.82752...
+## $ month                    &lt;fct&gt; March, September, September, October,...
+## $ imports                  &lt;dbl&gt; 1.923680, 1.865905, 1.923680, 1.86590...
+## $ future_monthly_avg_price &lt;dbl&gt; 18.0300, 17.6520, 17.6520, 17.3450, 2...</code></pre>
+<p>So these dataframes look great - remember that the values look a little wonky because we’ve centered and scaled them, and that the overall goal is to predict future monthly average price given everything else. We can also look at the dimensions of the data frames (6101 rows in our training set and 1524 rows in our test set) - these make sense too, based on our previous training and test splits.</p>
+<p>Our basic ML pipeline is this:</p>
+<p><strong>Preprocess</strong> &gt; <strong>Split</strong> &gt; <strong>Model Building</strong> &gt; <strong>Model Testing</strong> &gt; <strong>Model Tuning</strong></p>
+<p>Let’s jump into some algorithms.<br />
+It’s worth talking a little bit about algorithm choice. In general, there are two big categories of predictive algorithms. First, there are those that predict classes (putting observations into categories based on other variables - think of things like tumor identification, identifying customers who might unsubscribe to a service (churn), or determining if a certain wine variety belongs in one cluster over another).</p>
+<p>The second are algorithms that output continuous, numeric values given a set of input variables (things like average customer rating of a book, the price of cryptocurrencies or, in our case the price of a hundred-weight of beans). I’ll cover classifcation algorithms in another post, and will focus on a variety of continuous predictors here. A brief aside here - we’ll also be focusing exclusively on supervised learning - unsupervised learning typically adresses a differnt set of questions (taking unlabeled data and finding patterns or classifcations within the data set) - here, we have a different goal - generate good predictive models.</p>
+<p>There are a bazillion different algorithms, which can be a bit daunting at first, but we’ll explore a few of the basics here:<br />
+1. Linear Regression<br />
+2. Classification and Regression Tree (CART)<br />
+3. Artificial Neural Net (ANN)<br />
+4. Random Forest</p>
+<p>All of these algorithms have pros and cons. For example, linear regressions provide fairly interpretable mechanics (that is, we can see what the model is doing to extract what variables are the most important and how they’re interacting), whereas neural netss are great at predicting really complex phenomena, but are computationally expensive (you’ll see below that they can take a long time to run), and are black boxes (i.e. it’s hard for humans to interpret what’s happening inside them).</p>
+</div>
+<div id="linear-regression" class="section level2">
+<h2>Linear Regression</h2>
+<p>Let’s start with the old standby of analysis - the linear regression. If you want a refresher on how this works, check out <a href="www.wikipedia.org/wiki/Linear_regression">this</a>. In its simplest form, regression models predict variability in one continuous variable based on another, generating a line that best predicts this relationship. This get’s a little more complicated when the model incorporates information on many different variables, and interactions between those variables, but… that’s not what this post is about.</p>
+<p>In all of the examples, we’ll be implementing the caret package to run the models.</p>
+<p>The first step is to setup an object that will allow us to control parameters across all the m</p>
+<pre class="r"><code>library(caret)
+
+#setting seed for reproducibility:
+set.seed(42)
+fitControl = trainControl(method = &quot;repeatedcv&quot;, number = 5, repeats = 5)</code></pre>
+<p>The <code>trainControl</code> function here lets us build this object. If you check out the help page for the function, you can see there are <strong>LOTS</strong> of arguments - you have a lot of control over what happens in your models. Here, we’re specifying that we’re going to use repeated cross validation (check out <a href="keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/">this</a>), with 5 repeats and 5 folds (this is fairly robust, and we might have reduce it later on for the ANN). Because these are example models, I’m using a smaller number of repeats and folds, which can help us do quicker model assement before diving in deeper to tune models.</p>
+<p>Now we can run our model:</p>
+<p>A warning - this takes a while, mostly because we’re doing a lot of model comparisons. The <code>train</code> function is splitting the training data into 10 different training and test sets 10 different times, <em>AND</em> also using the grid argument in <code>trainControl</code> to modifying different model parameters of the linear regression to tune the model simulatenously.</p>
+<pre class="r"><code>#And just a standard linear model
+lmfit1 = train(future_monthly_avg_price ~ ., data = bean_ML_import_train,
+               method = &quot;lm&quot;,
+               trControl = fitControl)</code></pre>
+<p>Next, we can inspect our model, and also examine how well it did on in-sample data.</p>
+<pre class="r"><code>lmfit1</code></pre>
+<pre><code>## Linear Regression 
+## 
+## 6101 samples
+##   12 predictor
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold, repeated 5 times) 
+## Summary of sample sizes: 4881, 4879, 4882, 4881, 4881, 4880, ... 
+## Resampling results:
+## 
+##   RMSE      Rsquared   MAE     
+##   5.365845  0.5593651  4.111581
+## 
+## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
+<p>Not bad! You can see from the output that we have an RMSE (Root-Mean Squared Error) of 5.4, which means that on average, the model predicts bean price within $5.4 per hundred-weight, and an R-squared of 0.559 The model is only explaining around 56% of the variance in price. Remember, this is only an estimate on in-sample data using k-fold cross validation - the actual effectivness of the model might be different on test data.</p>
+<p>Also, the MAE parapmeter stands for Mean Absolute Error, and is another parameter we can asseess our model’s fit with - also in the same units as the dependent variable (just like RMSE). A nice comparison of RMSE and MAE can be found <a href="https://medium.com/human-in-a-machine-world/mae-and-rmse-which-metric-is-better-e60ac3bde13d">here</a>.</p>
+<p>We could try and tune the model, and run it on out-of-sample test data, but let’s move on to some more models.</p>
+</div>
+<div id="classification-and-regression-tree-models" class="section level2">
+<h2>Classification and Regression Tree Models</h2>
+<p>CART stands for Classification and Regression Tree. These models are a type of decision tree model, an overview of which can be found <a href="https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/">here</a> if you’re interested in the machinery under the hood.</p>
+<pre class="r"><code>cartfit1 = train(future_monthly_avg_price ~ ., data = bean_ML_import_train,
+                 method = &quot;rpart&quot;,
+                 trControl = fitControl)</code></pre>
+<pre><code>## Warning in nominalTrainWorkflow(x = x, y = y, wts = weights, info =
+## trainInfo, : There were missing values in resampled performance measures.</code></pre>
+<pre class="r"><code>cartfit1</code></pre>
+<pre><code>## CART 
+## 
+## 6101 samples
+##   12 predictor
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold, repeated 5 times) 
+## Summary of sample sizes: 4882, 4880, 4879, 4882, 4881, 4880, ... 
+## Resampling results across tuning parameters:
+## 
+##   cp         RMSE      Rsquared   MAE     
+##   0.0433896  6.003610  0.4477434  4.657532
+##   0.1162622  6.480589  0.3562770  5.035152
+##   0.3085252  7.520604  0.2895985  5.969671
+## 
+## RMSE was used to select the optimal model using the smallest value.
+## The final value used for the model was cp = 0.0433896.</code></pre>
+<p>So this model is worse than the old-fashioned linear regression! The best model here generates an RMSE of 6.00 and an R-squared of 0.45 - the model is predicting 45% of the variance in market prices 6 months ahead of time - not bad!</p>
+<p>Let’s try running the model on our out-of-sample test set.</p>
+<p>We use two functions to do this - first the predict function, which we feed our model and the test-data set. This will use the model to build some predictions of price 6 months ahead of time which we can then compare to the actual prices in thes test set.</p>
+<p>We can do this comparison with the <code>postResample</code> function from caret, which compares the mean-squared error and R-squared for our predicted values and the actual values of the test set.</p>
+<pre class="r"><code>p_cartfit1 = predict(cartfit1, bean_ML_import_test)
+
+postResample(pred = p_cartfit1, obs = bean_ML_import_test$future_monthly_avg_price)</code></pre>
+<pre><code>##      RMSE  Rsquared       MAE 
+## 6.0397584 0.4233428 4.7287406</code></pre>
+<p>So, pretty close to the measures of model performance obtained with 5-fold cross validation, though a bit worse. Overall, we’re improving though.</p>
+<p>We could go back and tune the CART model, by changing the tuneLength argument in the train function, but let’s do this on a later model - we’re starting to get to the good stuff!</p>
+</div>
+<div id="artificial-neural-net" class="section level2">
+<h2>Artificial Neural Net</h2>
+<p>Neural nets were designed to mimic how our brains and biological communication systems function. They’re made up of a collection of units or nodes and can transmit information to each other. Deep neural nets that allow information to travel all around the network are en vogue right now, but are computationally expensive - here, we’ll used a paired down version, again with the caret package.</p>
+<pre class="r"><code>nnfit2 = train(future_monthly_avg_price ~ ., data = bean_ML_import_train,
+               method = &quot;nnet&quot;,
+               trControl = fitControl,
+               maxit = 100,
+               linout = 1, 
+               verbose = FALSE)</code></pre>
+<pre><code>## Warning in nominalTrainWorkflow(x = x, y = y, wts = weights, info =
+## trainInfo, : There were missing values in resampled performance measures.</code></pre>
+<p>Here, we specify the linout argumnet as TRUE in the train function - this lets the function know that we’re interested in a linear output - otherwise a sigmoidal activation function is used, and all the predictions will be constrained between 0 and 1.</p>
+<pre class="r"><code>nnfit2</code></pre>
+<pre><code>## Neural Network 
+## 
+## 6101 samples
+##   12 predictor
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold, repeated 5 times) 
+## Summary of sample sizes: 4880, 4880, 4881, 4881, 4882, 4880, ... 
+## Resampling results across tuning parameters:
+## 
+##   size  decay  RMSE      Rsquared   MAE     
+##   1     0e+00  8.080127        NaN  6.501369
+##   1     1e-04  8.080127        NaN  6.501369
+##   1     1e-01  7.881306  0.1241743  6.330698
+##   3     0e+00  8.080127        NaN  6.501369
+##   3     1e-04  8.080127        NaN  6.501369
+##   3     1e-01  7.449453  0.4798837  5.950023
+##   5     0e+00  8.080127        NaN  6.501369
+##   5     1e-04  8.080127        NaN  6.501369
+##   5     1e-01  7.255844  0.4153007  5.773972
+## 
+## RMSE was used to select the optimal model using the smallest value.
+## The final values used for the model were size = 5 and decay = 0.1.</code></pre>
+<pre class="r"><code>p_nnetfit2 = predict(nnfit2, bean_ML_import_test)
+
+postResample(pred = p_nnetfit2, obs = bean_ML_import_test$future_monthly_avg_price)</code></pre>
+<pre><code>##      RMSE  Rsquared       MAE 
+## 5.2056459 0.5697035 4.0592629</code></pre>
+<p>Here, the best model in our tuning grid was one with an RMSE of $7.71/hundredweight of beans in in-sample data, which resulted in an RMSE of 7.9 on out-of-sample test data. Unfortunately, we can’t extract R^2s from these data (a finciky bit of the nnet function, which I can’t find an answer to!). Regardless, not much better than our linear regression. Let’s move on.</p>
+</div>
+<div id="random-forest" class="section level2">
+<h2>Random Forest</h2>
+<p>Random forests algorithms are a type of ensemble learning method - the idea is to construct a ton of different decision trees, and outputting the mean prediction of all of the individual trees. Here, we use the caret pacakge again, with the ranger function.</p>
+<p>This is going to take a while if you run it yourself…</p>
+<pre class="r"><code>rffit1 =  train(future_monthly_avg_price ~ ., data = bean_ML_import_train,
+                        method = &quot;ranger&quot;,
+                        trControl = fitControl)
+
+rffit1</code></pre>
+<pre><code>## Random Forest 
+## 
+## 6101 samples
+##   12 predictor
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold, repeated 5 times) 
+## Summary of sample sizes: 4882, 4881, 4882, 4879, 4880, 4881, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  splitrule   RMSE      Rsquared   MAE      
+##    2    variance    3.469872  0.8684889  2.7045488
+##    2    extratrees  4.922189  0.7763186  3.9290863
+##   16    variance    1.465102  0.9685482  0.8722360
+##   16    extratrees  1.512769  0.9683322  0.9566884
+##   30    variance    1.506020  0.9661231  0.8499988
+##   30    extratrees  1.469716  0.9695850  0.9027341
+## 
+## Tuning parameter &#39;min.node.size&#39; was held constant at a value of 5
+## RMSE was used to select the optimal model using the smallest value.
+## The final values used for the model were mtry = 16, splitrule =
+##  variance and min.node.size = 5.</code></pre>
+<p>Woooooooo man! Look at those scores! The best model has an R^2 of 0.97, and an RMSE of 1.515! This is by far the best model we’ve tested so far. It’s explaining 97% of the variance in future average monthly price!</p>
+<p>Let’s see how it does on out-of-sample data.</p>
+<pre class="r"><code>p_rffit2 = predict(rffit1, bean_ML_import_test)
+
+postResample(pred = p_rffit2, obs = bean_ML_import_test$future_monthly_avg_price)</code></pre>
+<pre><code>##      RMSE  Rsquared       MAE 
+## 1.2342623 0.9765519 0.7254784</code></pre>
+<p>Fantastic - the model appears to have similar performance on the test data! Let’s see if we can tune the model a bit more to get a bit more predictive power.</p>
+<pre class="r"><code>rffit2 =  train(future_monthly_avg_price ~ ., data = bean_ML_import_train,
+                        method = &quot;ranger&quot;,
+                        trControl = fitControl, 
+                        tuneLength = 5)
+
+rffit2</code></pre>
+<pre><code>## Random Forest 
+## 
+## 6101 samples
+##   12 predictor
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold, repeated 5 times) 
+## Summary of sample sizes: 4881, 4881, 4881, 4880, 4881, 4880, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  splitrule   RMSE      Rsquared   MAE      
+##    2    variance    3.484480  0.8672428  2.7130311
+##    2    extratrees  4.912424  0.7758483  3.9211817
+##    9    variance    1.563117  0.9647930  0.9655579
+##    9    extratrees  1.633444  0.9638930  1.0733833
+##   16    variance    1.461370  0.9687225  0.8721647
+##   16    extratrees  1.516951  0.9680933  0.9593576
+##   23    variance    1.448004  0.9689824  0.8435539
+##   23    extratrees  1.479318  0.9693886  0.9200007
+##   30    variance    1.490552  0.9668369  0.8483187
+##   30    extratrees  1.471178  0.9695186  0.9023834
+## 
+## Tuning parameter &#39;min.node.size&#39; was held constant at a value of 5
+## RMSE was used to select the optimal model using the smallest value.
+## The final values used for the model were mtry = 23, splitrule =
+##  variance and min.node.size = 5.</code></pre>
+<p>This model took some time to run and tune, and we’ve improved the in-sample prediction slightly. Let’s test it out on the test data.</p>
+<pre class="r"><code>p_rffit3 = predict(rffit2, bean_ML_import_test)
+
+postResample(pred = p_rffit3, obs = bean_ML_import_test$future_monthly_avg_price)</code></pre>
+<pre><code>##      RMSE  Rsquared       MAE 
+## 1.2236033 0.9767012 0.6869148</code></pre>
+<p>This results in significant improvements - with better RMSE, Rsquared and MAE values compared to the un-tuned model.</p>
+<p>Finally, let’s take a look at how to visualize how well our model does.</p>
+<pre class="r"><code>#binding the predictions onto the test set
+bean_ML_import_test$pred = predict(rffit1, newdata = bean_ML_import_test)
+
+#generating a plot of actual prices versus predicted future prices
+ggplot(bean_ML_import_test, aes(x = pred, y = future_monthly_avg_price, color = class)) +
+  geom_point() +
+  theme_classic() +
+  geom_abline(slope = 1, intercept = 1) +
+  xlab(&quot;Predicted Future Price&quot;) +
+  ylab(&quot;Actual Future Price &quot;)</code></pre>
+<p><img src="https://keatonwilson.github.io/post/2018-04-21-bean-market-predictions-using-machine-learning-algorithms_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+The black diagonal line represents the 1:1 line, dots on this line are when our model is doing a perfect job of predicting. Points above this line are scenarios where our model under-predicted price, and dots below are when the model over-predicted price. One interesting trend is that you can see that though most dots are <strong>really</strong> close to the line, many are just below, indicating that our model consistently slightly over-predicts price - something to keep in mind if this was going to be used for by investors.</p>
+<pre class="r"><code>#We can also plot this over time for each variety
+bean_ML_import_test$date = as.Date(bean_ML_import_test$date)
+bean_ML_import_test %&gt;%
+  gather(key = valuetype, value = future_price, pred, future_monthly_avg_price) %&gt;%
+ggplot(aes(x = date, y = future_price, color = class, lty = factor(valuetype))) +
+         geom_path() +
+        theme_classic() +
+  facet_wrap( ~ class) +
+  ylab(&quot;Future Price ($)&quot;) +
+  xlab(&quot;Date&quot;) +
+  scale_linetype_discrete(name = &quot;&quot;,
+                          labels = c(&quot;Actual Future Price&quot;, &quot;Predicted Future Price&quot;)) +
+  scale_color_discrete(name = &quot;Variety&quot;)</code></pre>
+<p><img src="https://keatonwilson.github.io/post/2018-04-21-bean-market-predictions-using-machine-learning-algorithms_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+Overall this figure matches the first figure - our model is doing a great job over time at prediction.</p>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<p>Overall, this post outlines one of the main goals I was working towards on this project - to develop a machine learning model that does a good job of predicting future bean prices based on current information. The best model here does a pretty amazing job at this - predicting the average monthly price six months into the future within $1.20/hundredweight across all classes. You can imagine how useful this type of predictive model might be for individuals or businsses interested in speculating on the market.</p>
+<p>In the next few posts, we’ll look at some other interesting data from this project - and I’ll introduce a basic investing/portfolio model I’ve built on the Machine Learning model outlined here to demonstrate how much money someone could make if they had used this model to trade beans during this period. Pretty interesting stuff!</p>
+<p>Cheers!</p>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://keatonwilson.github.io/tags/beans/">beans</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/" data-tooltip="Preprocessing Bean Data (on the road to Machine Learning)">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Keaton Wilson. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/" data-tooltip="Preprocessing Bean Data (on the road to Machine Learning)">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F04%2Fbean-market-predictions-using-machine-learning-algorithms%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F04%2Fbean-market-predictions-using-machine-learning-algorithms%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fkeatonwilson.github.io%2F2018%2F04%2Fbean-market-predictions-using-machine-learning-algorithms%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Keaton Wilson</h4>
+    
+      <div id="about-card-bio"><strong>Ecologist, data scientist, and creator</strong>. Over a decade of experience performing independent and collaborative research and qualitative and quantitative data analysis to generate thoughtful, intuitive insights that engage a broad audience. Creative and novel approaches to data visualization, analysis and design.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        National Institute of Health PERT Research and Teaching Fellow
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Tucson, Arizona
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+                <h3 class="media-heading">Bean Market Predictions using Machine Learning Algorithms</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Goals As I’ve discussed in earlier posts, the basic premise of this project was to use a nice (but messy) dataset from the USDA on domestic bean markets to explore a variety of different avenues of analysis, visualization and data exploration. One of the main goals of this project was to see if I could build some machine learning models that do a good job of predicting future prices of different classes of beans.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
+                <h3 class="media-heading">Preprocessing Bean Data (on the road to Machine Learning)</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
+More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/">
+                <h3 class="media-heading">The ecologist jumps into the deep, scary waters of machine learning...</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Misconceptions About two years ago, when I started thinking more deeply about the possibility of a career in data science, I made a concerted effort to figure out where my gaps in knowledge were (a phrase we often overuse in science, in my opinion - it feels a bit tired) and what my weaknesses were. I felt strong in R, felt that I had experience munging messy data, and felt strong in my statistical background, but I had virtually no experience with machine learning (ML), which seemed to be all anyone was talking about when I got on the web and started looking at data science positions.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/03/bean-munging-and-excel-wrangling/">
+                <h3 class="media-heading">Bean munging and Excel Wrangling</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Messy Excel Files So, as I discussed last time, the first big hurdle in starting to explore the domestic dry bean market data was overcoming the terror of working with a bunch of really messy, really gnarly excel files.
+The main one looks like this:Lots of problems, right? The data are in multiple sheets in a single workbook, they’re not uniform, etc. It’s an R-user’s nightmare, but the reality is that data often look like this.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/">
+                <h3 class="media-heading">An overview of the bean project</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/">
+                <h3 class="media-heading">Introduction (a more involved ‘hello world’). </h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Hello! I’m an ecologist and data scientist working at the University of Arizona in Tucson. I’m currently a postdoctoral fellow with the National Institute of Health (NIH), but as that position is coming to a close, am on the job market looking for new projects and challenges.
+Throughout my fellowship at the University of Arizona, I’ve become increasingly interested in data science, and have taken the plunge in applying some of the techniques I’ve developed a scientist to outside projects.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         6 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://keatonwilson.github.io/images/cover-1.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://keatonwilson.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/keatonwilson.github.io\/2018\/04\/bean-market-predictions-using-machine-learning-algorithms\/';
+          
+            this.page.identifier = '\/2018\/04\/bean-market-predictions-using-machine-learning-algorithms\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'keatonwilson.github.io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

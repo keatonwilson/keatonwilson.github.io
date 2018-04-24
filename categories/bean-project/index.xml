@@ -6,10 +6,19 @@
     <description>Recent content in Bean Project on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://keatonwilson.github.io/categories/bean-project/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bean Market Predictions using Machine Learning Algorithms</title>
+      <link>https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/</link>
+      <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/</guid>
+      <description>Goals As I’ve discussed in earlier posts, the basic premise of this project was to use a nice (but messy) dataset from the USDA on domestic bean markets to explore a variety of different avenues of analysis, visualization and data exploration. One of the main goals of this project was to see if I could build some machine learning models that do a good job of predicting future prices of different classes of beans.</description>
+    </item>
     
     <item>
       <title>Preprocessing Bean Data (on the road to Machine Learning)</title>
