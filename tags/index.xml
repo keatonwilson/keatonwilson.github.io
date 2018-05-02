@@ -2,66 +2,84 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Keaton Wilson</title>
-    <link>https://keatonwilson.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://keatonwilson.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Beans</title>
-      <link>https://keatonwilson.github.io/tags/beans/</link>
-      <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
+      <link>/tags/beans/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://keatonwilson.github.io/tags/beans/</guid>
+      <guid>/tags/beans/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exploration</title>
+      <link>/tags/exploration/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/exploration/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Markets</title>
-      <link>https://keatonwilson.github.io/tags/markets/</link>
+      <link>/tags/markets/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://keatonwilson.github.io/tags/markets/</guid>
+      <guid>/tags/markets/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Munging</title>
-      <link>https://keatonwilson.github.io/tags/munging/</link>
+      <link>/tags/munging/</link>
       <pubDate>Tue, 20 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://keatonwilson.github.io/tags/munging/</guid>
+      <guid>/tags/munging/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Prediction</title>
-      <link>https://keatonwilson.github.io/tags/prediction/</link>
+      <link>/tags/prediction/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://keatonwilson.github.io/tags/prediction/</guid>
+      <guid>/tags/prediction/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Science</title>
-      <link>https://keatonwilson.github.io/tags/science/</link>
+      <link>/tags/science/</link>
       <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://keatonwilson.github.io/tags/science/</guid>
+      <guid>/tags/science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visualization</title>
+      <link>/tags/visualization/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/visualization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vocs</title>
-      <link>https://keatonwilson.github.io/tags/vocs/</link>
+      <link>/tags/vocs/</link>
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://keatonwilson.github.io/tags/vocs/</guid>
+      <guid>/tags/vocs/</guid>
       <description></description>
     </item>
     

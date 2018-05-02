@@ -1,0 +1,885 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
+    <title>Data Exploration and Visualization on Bean Market Data</title>
+    <meta name="author" content="Keaton Wilson">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="Data Exploration I wanted to take a break this week from Machine Learning and prediction algorithms on the bean data and do a bit of data exploration and visualization of what is a pretty rich data set. The idea here is a bit of a conceptual switch from what we’ve been exploring - here, I’m interested in picking apart trends in the market, and examining relationships between the variables.
+First, let’s import the data from github and get the appropriate packages loaded:">
+    <meta property="og:description" content="Data Exploration I wanted to take a break this week from Machine Learning and prediction algorithms on the bean data and do a bit of data exploration and visualization of what is a pretty rich data set. The idea here is a bit of a conceptual switch from what we’ve been exploring - here, I’m interested in picking apart trends in the market, and examining relationships between the variables.
+First, let’s import the data from github and get the appropriate packages loaded:">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Data Exploration and Visualization on Bean Market Data">
+    <meta property="og:url" content="/2018/05/data-exploration-and-visualization-on-bean-market-data/">
+    <meta property="og:site_name" content="Keaton Wilson">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Keaton Wilson">
+    <meta name="twitter:description" content="Data Exploration I wanted to take a break this week from Machine Learning and prediction algorithms on the bean data and do a bit of data exploration and visualization of what is a pretty rich data set. The idea here is a bit of a conceptual switch from what we’ve been exploring - here, I’m interested in picking apart trends in the market, and examining relationships between the variables.
+First, let’s import the data from github and get the appropriate packages loaded:">
+    
+      <meta name="twitter:creator" content="@keatonwilson">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-116941718-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Keaton Wilson</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Keaton Wilson</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>Ecologist, data scientist, and creator</strong>. Over a decade of experience performing independent and collaborative research and qualitative and quantitative data analysis to generate thoughtful, intuitive insights that engage a broad audience. Creative and novel approaches to data visualization, analysis and design.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/keatonwilson">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.twitter.com/keatonwilson">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://www.keatonwilson.net">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-"></i>
+      
+      <span class="sidebar-button-desc">Main Website</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Data Exploration and Visualization on Bean Market Data
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-05-02T00:00:00Z">
+        
+  May 2, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/bean-project">bean project</a>, 
+    
+      <a class="category-link" href="/categories/data-science">data science</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <div id="data-exploration" class="section level2">
+<h2>Data Exploration</h2>
+<p>I wanted to take a break this week from Machine Learning and prediction algorithms on the bean data and do a bit of data exploration and visualization of what is a pretty rich data set. The idea here is a bit of a conceptual switch from what we’ve been exploring - here, I’m interested in picking apart trends in the market, and examining relationships between the variables.</p>
+<p>First, let’s import the data from github and get the appropriate packages loaded:</p>
+<pre class="r"><code>#packages
+library(tidyverse)
+
+
+#importing the master data set we&#39;ve been working with
+bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&quot;)
+
+glimpse(bean_master_import)</code></pre>
+<pre><code>## Observations: 8,407
+## Variables: 19
+## $ date                    &lt;date&gt; 1987-01-13, 1987-01-21, 1987-01-27, 1...
+## $ class                   &lt;chr&gt; &quot;Pinto&quot;, &quot;Pinto&quot;, &quot;Pinto&quot;, &quot;Pinto&quot;, &quot;P...
+## $ price                   &lt;dbl&gt; 18.62, 18.25, 18.12, 18.12, 18.49, 18....
+## $ weekly_avg_price        &lt;dbl&gt; 18.62, 18.25, 18.12, 18.12, 18.49, 18....
+## $ future_date             &lt;date&gt; 1987-07-13, 1987-07-21, 1987-07-27, 1...
+## $ future_weekly_avg_price &lt;dbl&gt; 20.25, 20.25, 20.00, 19.25, 18.75, 18....
+## $ whole_market_avg        &lt;dbl&gt; 29.18700, 28.85000, 28.89900, 28.81200...
+## $ whole_market_sum        &lt;dbl&gt; 291.87, 288.50, 288.99, 288.12, 239.99...
+## $ class_market_share      &lt;dbl&gt; 0.06379553, 0.06325823, 0.06270113, 0....
+## $ planted                 &lt;dbl&gt; 637.6, 637.6, 637.6, 637.6, 637.6, 637...
+## $ harvested               &lt;dbl&gt; 617.1, 617.1, 617.1, 617.1, 617.1, 617...
+## $ yield                   &lt;int&gt; 1549, 1549, 1549, 1549, 1549, 1549, 15...
+## $ production              &lt;int&gt; 9560, 9560, 9560, 9560, 9560, 9560, 95...
+## $ season_avg_price        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+## $ production_value        &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+## $ year                    &lt;dbl&gt; 1987, 1987, 1987, 1987, 1987, 1987, 19...
+## $ month                   &lt;chr&gt; &quot;January&quot;, &quot;January&quot;, &quot;January&quot;, &quot;Febr...
+## $ imports                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+## $ season_total            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...</code></pre>
+<p>Lots of variables here, so take a brief moment to re-orient to all the data we have at our disposal.</p>
+</div>
+<div id="basic-visualization" class="section level2">
+<h2>Basic Visualization</h2>
+<p>So, the first thing that would be nice to see is how price of each class (bean type) has changed over time. Because we have lots of classes, it makes sense to facet our data (split it by class). This is easy in ggplot2.</p>
+<pre class="r"><code>ggplot(bean_master_import, aes(x = date, y = price, color = factor(class))) +
+  geom_path() +
+  facet_wrap(~ class) +
+  ylab(&quot;Price/Hundredweight ($)&quot;) +
+  xlab(&quot;Date&quot;) +
+  scale_color_discrete(name = &quot;Class&quot;) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))</code></pre>
+<p><img src="/post/2018-05-02-data-exploration-and-visualization-on-bean-market-data_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>This is cool - we can see that not all prices have been tracked for all classes across time, and we can see how much variance across time there has been - for example Navy beans were <strong>SUPER</strong> expensive in the early 80s, but dropped noticeably through the 90s and early 2000s. There also seems to be some interesting periodicity in Pintos, where prices spike every 9 years or so.</p>
+<p>We can also plot the overall market average price and determine which classes are over- or under-performing relative to the entire market. The dotted line is the market average and the solid line are individual class prices.</p>
+<pre class="r"><code>ggplot(bean_master_import, aes(x = date, y = price, color = factor(class))) +
+  geom_path() +
+  geom_path(aes(x = date, y = whole_market_avg), linetype = &quot;dashed&quot;) +
+  facet_wrap(~ class) +
+  ylab(&quot;Price/Hundredweight ($)&quot;) +
+  xlab(&quot;Date&quot;) +
+  scale_color_discrete(name = &quot;Class&quot;) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))</code></pre>
+<p><img src="/post/2018-05-02-data-exploration-and-visualization-on-bean-market-data_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>This is a little hard to see with this much data, so let’s zoom in on Pintos. I’ll use the pipe operator and dplyr’s filter function to subset…</p>
+<pre class="r"><code>bean_master_import %&gt;%
+  filter(class == &quot;Pinto&quot;) %&gt;%
+ggplot(aes(x = date, y = price)) +
+  geom_path() +
+  geom_path(aes(x = date, y = whole_market_avg), linetype = &quot;dashed&quot;) +
+  ylab(&quot;Price/Hundredweight ($)&quot;) +
+  xlab(&quot;Date&quot;) +
+  theme_classic()</code></pre>
+<p><img src="/post/2018-05-02-data-exploration-and-visualization-on-bean-market-data_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>This information can also be presented easily in a table - using a bit of the tidyverse’s summarizing magic. Here, I use mutate to generate a new column that looks at each row and determines whether a price datum is above or below the market average. We can then summarize this across all data and get the percentage of time a given varietal is above or below the market average.</p>
+<pre class="r"><code>bean_master_import %&gt;%
+  mutate(above_avg = ifelse(price &gt; whole_market_avg, 1, 0))  %&gt;%
+  group_by(class) %&gt;%
+  summarize(percent_above_market = sum(above_avg)/n()) %&gt;%
+  arrange(desc(percent_above_market))</code></pre>
+<pre><code>## # A tibble: 10 x 2
+##    class           percent_above_market
+##    &lt;chr&gt;                          &lt;dbl&gt;
+##  1 B_Lima                        0.725 
+##  2 Dark_Red_Kidney               0.647 
+##  3 Garbanzo                      0.567 
+##  4 Blackeye                      0.534 
+##  5 Kidney                        0.500 
+##  6 Black                         0.254 
+##  7 Pink                          0.197 
+##  8 Grt_Northern                  0.177 
+##  9 Pinto                         0.167 
+## 10 Navy                          0.0617</code></pre>
+<p>Interesting! It looks like Baby limas dominate the market overall, in our dataset, they are above the market-average 72.5% of the time, while Navy beans (even though being really high in 80s) were only above the market average 6% of the time since 1981.</p>
+<p>One last interesting data visualization we could do would be to plot market-share of individual varietals over time. Again, easy-peasy with ggplot2.</p>
+<pre class="r"><code>ggplot(bean_master_import, aes(x = date, y = class_market_share, color = factor(class))) +
+  geom_path() +
+  xlab(&quot;Date&quot;) +
+  ylab(&quot;Percentage Market Share (%)&quot;) +
+  scale_color_discrete(name = &quot;Class&quot;) +
+  theme_classic()</code></pre>
+<p><img src="/post/2018-05-02-data-exploration-and-visualization-on-bean-market-data_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Ok, so this figure doesn’t make a lot of sense - why are there huge spikes for some varietals? It’s probably because we have some missing data, so a given percentage marketshare for a given date isn’t representative (i.e. imagine a date that we only had information about pinto price - it would be 100% of the marketshare, but this isn’t real).</p>
+<p>How do we try and fix this?</p>
+<p>Let’s subset our data, and cut off all data that is above 35%, under the assumption that a given varietal probably never occupies more than 35% of the market share (there are 10 varietals… this is probably a good assumption.)</p>
+<pre class="r"><code>bean_master_import %&gt;%
+  filter(class_market_share &lt; 0.35) %&gt;%
+ggplot(aes(x = date, y = class_market_share, color = factor(class))) +
+  geom_path() +
+  xlab(&quot;Date&quot;) +
+  ylab(&quot;Percentage Market Share (%)&quot;) +
+  scale_color_discrete(name = &quot;Class&quot;) +
+  theme_classic()</code></pre>
+<p><img src="/post/2018-05-02-data-exploration-and-visualization-on-bean-market-data_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+Still hard to obtain any useful information here, let’s try and do a bit of smoothing…Here, I’m using the default loess smoothing method, and have turned off the confidence-interval plotting.</p>
+<pre class="r"><code>bean_master_import %&gt;%
+  filter(class_market_share &lt; 0.35) %&gt;%
+ggplot(aes(x = date, y = class_market_share, color = factor(class))) +
+  geom_smooth(span = 0.8, se = FALSE) +
+  xlab(&quot;Date&quot;) +
+  ylab(&quot;Percentage Market Share (%)&quot;) +
+  scale_color_discrete(name = &quot;Class&quot;) +
+  theme_classic()</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39;</code></pre>
+<p><img src="/post/2018-05-02-data-exploration-and-visualization-on-bean-market-data_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>We can see that a lot has changed since the 80s. 2010 has varietals that more equally contribute to the market compared to historic valuees. Navy beans seem to be on the rise - with a steady increase in marketshare since 2000.</p>
+</div>
+<div id="correlations-between-varietal-class-prices" class="section level2">
+<h2>Correlations between varietal (class) prices</h2>
+<p>One other interesting question we might ask is if the prices of different varietals are correlated with each other? In other words, is the price of black beans typically high when pintos are high, or do garbanzo bean prices drop when baby limas are high? These types of interactions might be the result of a variety of factors including demand, and competition for growing acreage.</p>
+<p>To look at these interactions, we need an ally: specifically the <code>GGally</code> package, which let’s us build really beautiful scatterplot matrices using ggplot framework. It’s also worth mentioning why the code below is a bit more substantial than what we’ve used so far - to generate these types of plots, we have to change our data from long form to wide form… because we’re treating the prices of different classes as separate variables. Again, the tidyverse’s <code>gather</code> and <code>spread</code> functions to the rescue.</p>
+<pre class="r"><code>library(GGally)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;GGally&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     nasa</code></pre>
+<pre class="r"><code>bean_master_import %&gt;%
+  select(price, class, date) %&gt;%
+  mutate(class = factor(class), 
+         id = 1:n()) %&gt;%
+  spread(key = class, value = price, drop = TRUE) %&gt;%
+  group_by(date) %&gt;%
+  summarize(B_Lima = mean(B_Lima, na.rm = TRUE),
+            Black = mean(Black, na.rm = TRUE),
+            Blackeye = mean(Blackeye, na.rm = TRUE),
+            Dark_Red_Kidney = mean(Dark_Red_Kidney, na.rm = TRUE),
+            Garbanzo = mean(Garbanzo, na.rm = TRUE),
+            Grt_Northern = mean(Grt_Northern, na.rm = TRUE),
+            Navy = mean(Navy, na.rm = TRUE),
+            Pink = mean(Pink, na.rm = TRUE),
+            Pinto = mean(Pinto, na.rm = TRUE)) %&gt;%
+  select(-date) %&gt;%
+  ggpairs(lower = list(continuous = wrap(&quot;points&quot;, alpha = 0.3,    size=0.1), 
+                       combo = wrap(&quot;dot&quot;, alpha = 0.4,            size=0.2) ))</code></pre>
+<p><img src="/post/2018-05-02-data-exploration-and-visualization-on-bean-market-data_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+Lots of information here! We’ve plotted all combination of prices of different classes against each other, and the top-right of the matrix has the correlation coefficient for each combination. A correlation coefficient ranges from -1 to 1, where -1 and 1 are perfect negative and positive correlations, respectively.</p>
+<p>A few interesting patterns to note:</p>
+<ol style="list-style-type: decimal">
+<li>There aren’t any negative correlations - i.e. there are situations where the value of one varietal is high which is correlated with a low value in another varietal, which indicates there isn’t a lot of competition among varietals.<br />
+</li>
+<li>Some varietals are very tightly correlated (i.e. Navy Beans and Black Beans, Dark Red Kidneys and Black Beans and Pinks and Pintos). I don’t have a good explanation for why this is - it would take some deeper insider knowledge of how the markets operate.</li>
+</ol>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<p>Overall, I hope this post demonstrated some of the interesting types of analysis that can be done on rich data sets like this. We performend basically no statistics on these data, but from some visualizations and summarizing functions, we can gain some interesting insights into historical trends in the market, and come up with some ideas about the type of forces driving these patterns.</p>
+<p>Cheers!</p>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/beans/">beans</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/visualization/">visualization</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/exploration/">exploration</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/bean-market-predictions-using-machine-learning-algorithms/" data-tooltip="Bean Market Predictions using Machine Learning Algorithms">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/05/data-exploration-and-visualization-on-bean-market-data/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/05/data-exploration-and-visualization-on-bean-market-data/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/05/data-exploration-and-visualization-on-bean-market-data/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Keaton Wilson. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/bean-market-predictions-using-machine-learning-algorithms/" data-tooltip="Bean Market Predictions using Machine Learning Algorithms">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/05/data-exploration-and-visualization-on-bean-market-data/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/05/data-exploration-and-visualization-on-bean-market-data/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/05/data-exploration-and-visualization-on-bean-market-data/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=%2F2018%2F05%2Fdata-exploration-and-visualization-on-bean-market-data%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2F2018%2F05%2Fdata-exploration-and-visualization-on-bean-market-data%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=%2F2018%2F05%2Fdata-exploration-and-visualization-on-bean-market-data%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Keaton Wilson</h4>
+    
+      <div id="about-card-bio"><strong>Ecologist, data scientist, and creator</strong>. Over a decade of experience performing independent and collaborative research and qualitative and quantitative data analysis to generate thoughtful, intuitive insights that engage a broad audience. Creative and novel approaches to data visualization, analysis and design.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        National Institute of Health PERT Research and Teaching Fellow
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Tucson, Arizona
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/05/data-exploration-and-visualization-on-bean-market-data/">
+                <h3 class="media-heading">Data Exploration and Visualization on Bean Market Data</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Data Exploration I wanted to take a break this week from Machine Learning and prediction algorithms on the bean data and do a bit of data exploration and visualization of what is a pretty rich data set. The idea here is a bit of a conceptual switch from what we’ve been exploring - here, I’m interested in picking apart trends in the market, and examining relationships between the variables.
+First, let’s import the data from github and get the appropriate packages loaded:</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+                <h3 class="media-heading">Bean Market Predictions using Machine Learning Algorithms</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Goals As I’ve discussed in earlier posts, the basic premise of this project was to use a nice (but messy) dataset from the USDA on domestic bean markets to explore a variety of different avenues of analysis, visualization and data exploration. One of the main goals of this project was to see if I could build some machine learning models that do a good job of predicting future prices of different classes of beans.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
+                <h3 class="media-heading">Preprocessing Bean Data (on the road to Machine Learning)</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
+More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/">
+                <h3 class="media-heading">The ecologist jumps into the deep, scary waters of machine learning...</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Misconceptions About two years ago, when I started thinking more deeply about the possibility of a career in data science, I made a concerted effort to figure out where my gaps in knowledge were (a phrase we often overuse in science, in my opinion - it feels a bit tired) and what my weaknesses were. I felt strong in R, felt that I had experience munging messy data, and felt strong in my statistical background, but I had virtually no experience with machine learning (ML), which seemed to be all anyone was talking about when I got on the web and started looking at data science positions.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/bean-munging-and-excel-wrangling/">
+                <h3 class="media-heading">Bean munging and Excel Wrangling</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Messy Excel Files So, as I discussed last time, the first big hurdle in starting to explore the domestic dry bean market data was overcoming the terror of working with a bunch of really messy, really gnarly excel files.
+The main one looks like this:Lots of problems, right? The data are in multiple sheets in a single workbook, they’re not uniform, etc. It’s an R-user’s nightmare, but the reality is that data often look like this.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/an-overview-of-the-bean-project/">
+                <h3 class="media-heading">An overview of the bean project</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/introduction-a-more-involved-hello-world/">
+                <h3 class="media-heading">Introduction (a more involved ‘hello world’). </h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Hello! I’m an ecologist and data scientist working at the University of Arizona in Tucson. I’m currently a postdoctoral fellow with the National Institute of Health (NIH), but as that position is coming to a close, am on the job market looking for new projects and challenges.
+Throughout my fellowship at the University of Arizona, I’ve become increasingly interested in data science, and have taken the plunge in applying some of the techniques I’ve developed a scientist to outside projects.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         7 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('/images/cover-1.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2018\/05\/data-exploration-and-visualization-on-bean-market-data\/';
+          
+            this.page.identifier = '\/2018\/05\/data-exploration-and-visualization-on-bean-market-data\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'keatonwilson.github.io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
