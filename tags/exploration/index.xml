@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Exploration on Keaton Wilson</title>
-    <link>/tags/exploration/</link>
+    <link>https://keatonwilson.github.io/tags/exploration/</link>
     <description>Recent content in Exploration on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 02 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/exploration/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://keatonwilson.github.io/tags/exploration/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Data Exploration and Visualization on Bean Market Data</title>
-      <link>/2018/05/data-exploration-and-visualization-on-bean-market-data/</link>
+      <link>https://keatonwilson.github.io/2018/05/data-exploration-and-visualization-on-bean-market-data/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/05/data-exploration-and-visualization-on-bean-market-data/</guid>
+      <guid>https://keatonwilson.github.io/2018/05/data-exploration-and-visualization-on-bean-market-data/</guid>
       <description>Data Exploration I wanted to take a break this week from Machine Learning and prediction algorithms on the bean data and do a bit of data exploration and visualization of what is a pretty rich data set. The idea here is a bit of a conceptual switch from what we’ve been exploring - here, I’m interested in picking apart trends in the market, and examining relationships between the variables.
 First, let’s import the data from github and get the appropriate packages loaded:</description>
     </item>

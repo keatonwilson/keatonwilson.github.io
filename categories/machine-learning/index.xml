@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine Learning on Keaton Wilson</title>
-    <link>/categories/machine-learning/</link>
+    <link>https://keatonwilson.github.io/categories/machine-learning/</link>
     <description>Recent content in Machine Learning on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 21 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://keatonwilson.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bean Market Predictions using Machine Learning Algorithms</title>
-      <link>/2018/04/bean-market-predictions-using-machine-learning-algorithms/</link>
+      <link>https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/</link>
       <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/04/bean-market-predictions-using-machine-learning-algorithms/</guid>
+      <guid>https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/</guid>
       <description>Goals As I’ve discussed in earlier posts, the basic premise of this project was to use a nice (but messy) dataset from the USDA on domestic bean markets to explore a variety of different avenues of analysis, visualization and data exploration. One of the main goals of this project was to see if I could build some machine learning models that do a good job of predicting future prices of different classes of beans.</description>
     </item>
     
     <item>
       <title>Preprocessing Bean Data (on the road to Machine Learning)</title>
-      <link>/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</link>
+      <link>https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</guid>
+      <guid>https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</guid>
       <description>The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
 More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?</description>
     </item>
     
     <item>
       <title>The ecologist jumps into the deep, scary waters of machine learning...</title>
-      <link>/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</link>
+      <link>https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</link>
       <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</guid>
+      <guid>https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</guid>
       <description>Misconceptions About two years ago, when I started thinking more deeply about the possibility of a career in data science, I made a concerted effort to figure out where my gaps in knowledge were (a phrase we often overuse in science, in my opinion - it feels a bit tired) and what my weaknesses were. I felt strong in R, felt that I had experience munging messy data, and felt strong in my statistical background, but I had virtually no experience with machine learning (ML), which seemed to be all anyone was talking about when I got on the web and started looking at data science positions.</description>
     </item>
     

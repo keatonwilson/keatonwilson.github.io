@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Markets on Keaton Wilson</title>
-    <link>/tags/markets/</link>
+    <link>https://keatonwilson.github.io/tags/markets/</link>
     <description>Recent content in Markets on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/markets/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://keatonwilson.github.io/tags/markets/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Preprocessing Bean Data (on the road to Machine Learning)</title>
-      <link>/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</link>
+      <link>https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</guid>
+      <guid>https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</guid>
       <description>The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
 More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?</description>
     </item>
     
     <item>
       <title>An overview of the bean project</title>
-      <link>/2018/03/an-overview-of-the-bean-project/</link>
+      <link>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</link>
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/an-overview-of-the-bean-project/</guid>
+      <guid>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</guid>
       <description>Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.</description>
     </item>
     
