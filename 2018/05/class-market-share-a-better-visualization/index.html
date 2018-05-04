@@ -1,5 +1,9 @@
 
 
+  
+    
+  
+
 
   
 
@@ -18,25 +22,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Markets</title>
+    <title>Class Market Share - A better visualization</title>
     <meta name="author" content="Keaton Wilson">
     <meta name="keywords" content="">
 
     <link rel="icon" href="/favicon.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="/tags/markets/index.xml">
-    
 
     
-    <meta name="description" content="Data Scientist, Ecologist, Researcher">
-    <meta property="og:description" content="Data Scientist, Ecologist, Researcher">
+    <meta name="description" content="Better viz Anna Cates, a blog reader and soil ecologist working at the University of Wisconsin-Madison had a great suggestion for visualizing market-share change over time for different varietals - the stacked bar chart! I thought I’d write a brief post with some code!
+#packages library(tidyverse) library(lubridate) #importing the master data set we&#39;ve been working with bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&quot;) bean_master_import_bar = bean_master_import %&gt;% mutate(month = month(date), class = factor(class)) %&gt;% group_by(year, month, class) %&gt;% summarize(monthly_mean_market_share = mean(class_market_share)) #Making a new column of just the beginning of each month, since we&#39;re binning by month beg_month_date = paste(bean_master_import_bar$year, bean_master_import_bar$month, rep(1, length(bean_master_import_bar$year)), sep = &quot;-&quot;) bean_master_import_bar$beg_month_date = ymd(beg_month_date) #Filtering to get rid of some of the noise bean_master_import_bar %&gt;% filter(monthly_mean_market_share &lt; 0.">
+    <meta property="og:description" content="Better viz Anna Cates, a blog reader and soil ecologist working at the University of Wisconsin-Madison had a great suggestion for visualizing market-share change over time for different varietals - the stacked bar chart! I thought I’d write a brief post with some code!
+#packages library(tidyverse) library(lubridate) #importing the master data set we&#39;ve been working with bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&quot;) bean_master_import_bar = bean_master_import %&gt;% mutate(month = month(date), class = factor(class)) %&gt;% group_by(year, month, class) %&gt;% summarize(monthly_mean_market_share = mean(class_market_share)) #Making a new column of just the beginning of each month, since we&#39;re binning by month beg_month_date = paste(bean_master_import_bar$year, bean_master_import_bar$month, rep(1, length(bean_master_import_bar$year)), sep = &quot;-&quot;) bean_master_import_bar$beg_month_date = ymd(beg_month_date) #Filtering to get rid of some of the noise bean_master_import_bar %&gt;% filter(monthly_mean_market_share &lt; 0.">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Markets">
-    <meta property="og:url" content="/tags/markets/">
+    <meta property="og:title" content="Class Market Share - A better visualization">
+    <meta property="og:url" content="/2018/05/class-market-share-a-better-visualization/">
     <meta property="og:site_name" content="Keaton Wilson">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Keaton Wilson">
-    <meta name="twitter:description" content="Data Scientist, Ecologist, Researcher">
+    <meta name="twitter:description" content="Better viz Anna Cates, a blog reader and soil ecologist working at the University of Wisconsin-Madison had a great suggestion for visualizing market-share change over time for different varietals - the stacked bar chart! I thought I’d write a brief post with some code!
+#packages library(tidyverse) library(lubridate) #importing the master data set we&#39;ve been working with bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&quot;) bean_master_import_bar = bean_master_import %&gt;% mutate(month = month(date), class = factor(class)) %&gt;% group_by(year, month, class) %&gt;% summarize(monthly_mean_market_share = mean(class_market_share)) #Making a new column of just the beginning of each month, since we&#39;re binning by month beg_month_date = paste(bean_master_import_bar$year, bean_master_import_bar$month, rep(1, length(bean_master_import_bar$year)), sep = &quot;-&quot;) bean_master_import_bar$beg_month_date = ymd(beg_month_date) #Filtering to get rid of some of the noise bean_master_import_bar %&gt;% filter(monthly_mean_market_share &lt; 0.">
     
       <meta name="twitter:creator" content="@keatonwilson">
     
@@ -83,7 +88,7 @@ ga('send', 'pageview');
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="1">
+      <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="/">Keaton Wilson</a>
@@ -103,7 +108,7 @@ ga('send', 'pageview');
   
 </header>
 
-      <nav id="sidebar" data-behavior="1">
+      <nav id="sidebar" data-behavior="4">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -222,44 +227,26 @@ ga('send', 'pageview');
 </nav>
 
       
-        
 
-      
-      <div id="main" data-behavior="1"
+      <div id="main" data-behavior="4"
         class="
                hasCoverMetaIn
                ">
-        
-          <section class="postShorten-group main-content-wrap">
-            
-            
-              
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
   
-    
-      
-        
-      
-    
+    <h1 class="post-title" itemprop="headline">
+      Class Market Share - A better visualization
+    </h1>
   
-
-
   
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
-          Preprocessing Bean Data (on the road to Machine Learning)
-        </a>
-      </h1>
-      
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-04-03T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-05-04T00:00:00Z">
         
-  April 3, 2018
+  May 4, 2018
 
       </time>
     
@@ -267,68 +254,6 @@ ga('send', 'pageview');
   
   
     <span>in</span>
-    
-      <a class="category-link" href="/categories/bean-project">bean project</a>, 
-    
-      <a class="category-link" href="/categories/data-science">data science</a>, 
-    
-      <a class="category-link" href="/categories/machine-learning">machine learning</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-  Here, we take the next step in bean market prediction with machine learning project. I go through the steps I use to preprocess and split the data into training and test sets using the R package caret.
-
-      <p>
-        <a href="/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-            
-              
-  
-    
-      
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="/2018/03/an-overview-of-the-bean-project/">
-          An overview of the bean project
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-03-19T00:00:00Z">
-        
-  March 19, 2018
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/data-science">data science</a>, 
     
       <a class="category-link" href="/categories/bean-project">bean project</a>
     
@@ -336,25 +261,153 @@ ga('send', 'pageview');
 
   </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <div id="better-viz" class="section level2">
+<h2>Better viz</h2>
+<p><a href="https://www.swac.umn.edu/sites/swac.umn.edu/files/cates_public_cv.pdf">Anna Cates</a>, a blog reader and soil ecologist working at the University of Wisconsin-Madison had a great suggestion for visualizing market-share change over time for different varietals - the stacked bar chart! I thought I’d write a brief post with some code!</p>
+<pre class="r"><code>#packages
+library(tidyverse)
+library(lubridate)
+
+
+#importing the master data set we&#39;ve been working with
+bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&quot;)
+
+
+
+bean_master_import_bar = bean_master_import %&gt;%
+  mutate(month = month(date),
+         class = factor(class)) %&gt;%
+  group_by(year, month, class) %&gt;%
+  summarize(monthly_mean_market_share = mean(class_market_share)) 
+
+#Making a new column of just the beginning of each month, since we&#39;re binning by month
+beg_month_date = paste(bean_master_import_bar$year, bean_master_import_bar$month, rep(1, length(bean_master_import_bar$year)), sep = &quot;-&quot;)
+
+bean_master_import_bar$beg_month_date = ymd(beg_month_date)
+
+#Filtering to get rid of some of the noise
+bean_master_import_bar %&gt;%
+  filter(monthly_mean_market_share &lt; 0.25) %&gt;%
+
+ggplot( aes(x = beg_month_date, y = monthly_mean_market_share, fill = class)) +
+  geom_bar(stat = &quot;identity&quot;, position = &quot;fill&quot;, width = 200) +
+  theme_classic() +
+  ylab(&quot;Percentage Market Share&quot;) +
+  xlab(&quot;Date&quot;)</code></pre>
+<p><img src="/post/2018-05-04-class-market-share-a-better-visualization_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Nice! This is a much more informative way to view the data - we can easily see trends over time more clearly than with the loess-smoothed trends in the previous post.</p>
+<p>A couple of notes:</p>
+<ol style="list-style-type: decimal">
+<li>We have some gaps in our data at 1992 - I’ll need to go back and look at the original data frame to see what is going on there.<br />
+</li>
+<li>I’ve manually set the width parameter here so there is some overlap in bars - this helps smooth out the graph - overall, trends are the same, and easier to read/visualize when there isn’t jitter or small white gaps.<br />
+</li>
+<li>One way around these issues might be to bin in larger time-chunks - perhaps every 3 months instead of every month - I didn’t do that here, but it would be a nice challenge!</li>
+</ol>
+<p>Enjoy!</p>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/visualization/">visualization</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/beans/">beans</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/05/data-exploration-and-visualization-on-bean-market-data/" data-tooltip="Data Exploration and Visualization on Bean Market Data">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
       
-  Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.
-
-      <p>
-        <a href="/2018/03/an-overview-of-the-bean-project/" class="postShorten-excerpt_link link">Continue reading</a>
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
         
-      </p>
-    </div>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/05/class-market-share-a-better-visualization/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/05/class-market-share-a-better-visualization/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/05/class-market-share-a-better-visualization/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
   </div>
-  
-</article>
+
 
             
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
             
-
-          </section>
-        
+          </div>
+        </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
     &copy; 2018 Keaton Wilson. All Rights Reserved
@@ -362,6 +415,102 @@ ga('send', 'pageview');
 </footer>
 
       </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/05/data-exploration-and-visualization-on-bean-market-data/" data-tooltip="Data Exploration and Visualization on Bean Market Data">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/05/class-market-share-a-better-visualization/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/05/class-market-share-a-better-visualization/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/05/class-market-share-a-better-visualization/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=%2F2018%2F05%2Fclass-market-share-a-better-visualization%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2F2018%2F05%2Fclass-market-share-a-better-visualization%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=%2F2018%2F05%2Fclass-market-share-a-better-visualization%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
     </div>
     
     <div id="about">
@@ -596,6 +745,32 @@ $(document).ready(function() {
 });
 </script>
 
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2018\/05\/class-market-share-a-better-visualization\/';
+          
+            this.page.identifier = '\/2018\/05\/class-market-share-a-better-visualization\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'keatonwilson.github.io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 

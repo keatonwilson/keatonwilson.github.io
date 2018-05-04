@@ -22,9 +22,9 @@
     <meta name="author" content="Keaton Wilson">
     <meta name="keywords" content="">
 
-    <link rel="icon" href="https://keatonwilson.github.io/favicon.png">
+    <link rel="icon" href="/favicon.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://keatonwilson.github.io/index.xml">
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="/index.xml">
     
 
     
@@ -61,7 +61,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="https://keatonwilson.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
     
     
 
@@ -85,7 +85,7 @@ ga('send', 'pageview');
   <article class="post">
     <h1>404 Not Found</h1>
     <p>Sorry, but we couldn't find the page you're looking for.</p>
-    <p>Please head back <a href="https://keatonwilson.github.io/">home</a>.</p>
+    <p>Please head back <a href="/">home</a>.</p>
   </article>
 </main>
     
@@ -140,7 +140,25 @@ ga('send', 'pageview');
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/05/data-exploration-and-visualization-on-bean-market-data/">
+              <a class="link-unstyled" href="/2018/05/class-market-share-a-better-visualization/">
+                <h3 class="media-heading">Class Market Share - A better visualization</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Better viz Anna Cates, a blog reader and soil ecologist working at the University of Wisconsin-Madison had a great suggestion for visualizing market-share change over time for different varietals - the stacked bar chart! I thought I’d write a brief post with some code!
+#packages library(tidyverse) library(lubridate) #importing the master data set we&#39;ve been working with bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&quot;) bean_master_import_bar = bean_master_import %&gt;% mutate(month = month(date), class = factor(class)) %&gt;% group_by(year, month, class) %&gt;% summarize(monthly_mean_market_share = mean(class_market_share)) #Making a new column of just the beginning of each month, since we&#39;re binning by month beg_month_date = paste(bean_master_import_bar$year, bean_master_import_bar$month, rep(1, length(bean_master_import_bar$year)), sep = &quot;-&quot;) bean_master_import_bar$beg_month_date = ymd(beg_month_date) #Filtering to get rid of some of the noise bean_master_import_bar %&gt;% filter(monthly_mean_market_share &lt; 0.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/05/data-exploration-and-visualization-on-bean-market-data/">
                 <h3 class="media-heading">Data Exploration and Visualization on Bean Market Data</h3>
               </a>
               <span class="media-meta">
@@ -158,7 +176,7 @@ First, let’s import the data from github and get the appropriate packages load
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+              <a class="link-unstyled" href="/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
                 <h3 class="media-heading">Bean Market Predictions using Machine Learning Algorithms</h3>
               </a>
               <span class="media-meta">
@@ -175,7 +193,7 @@ First, let’s import the data from github and get the appropriate packages load
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
+              <a class="link-unstyled" href="/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
                 <h3 class="media-heading">Preprocessing Bean Data (on the road to Machine Learning)</h3>
               </a>
               <span class="media-meta">
@@ -193,7 +211,7 @@ More generally: If I know something about the price of garbanzo beans today, and
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/">
+              <a class="link-unstyled" href="/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/">
                 <h3 class="media-heading">The ecologist jumps into the deep, scary waters of machine learning...</h3>
               </a>
               <span class="media-meta">
@@ -210,7 +228,7 @@ More generally: If I know something about the price of garbanzo beans today, and
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/03/bean-munging-and-excel-wrangling/">
+              <a class="link-unstyled" href="/2018/03/bean-munging-and-excel-wrangling/">
                 <h3 class="media-heading">Bean munging and Excel Wrangling</h3>
               </a>
               <span class="media-meta">
@@ -228,7 +246,7 @@ The main one looks like this:Lots of problems, right? The data are in multiple s
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/">
+              <a class="link-unstyled" href="/2018/03/an-overview-of-the-bean-project/">
                 <h3 class="media-heading">An overview of the bean project</h3>
               </a>
               <span class="media-meta">
@@ -245,7 +263,7 @@ The main one looks like this:Lots of problems, right? The data are in multiple s
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/">
+              <a class="link-unstyled" href="/2018/03/introduction-a-more-involved-hello-world/">
                 <h3 class="media-heading">Introduction (a more involved ‘hello world’). </h3>
               </a>
               <span class="media-meta">
@@ -267,7 +285,7 @@ Throughout my fellowship at the University of Arizona, I’ve become increasingl
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         7 posts found
+         8 posts found
       </p>
     </div>
   </div>
@@ -275,7 +293,7 @@ Throughout my fellowship at the University of Arizona, I’ve become increasingl
     
   
     
-    <div id="cover" style="background-image:url('https://keatonwilson.github.io/images/cover-1.jpg');"></div>
+    <div id="cover" style="background-image:url('/images/cover-1.jpg');"></div>
   
 
 
@@ -287,7 +305,7 @@ Throughout my fellowship at the University of Arizona, I’ve become increasingl
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="https://keatonwilson.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
 
 
 
