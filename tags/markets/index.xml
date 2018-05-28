@@ -6,10 +6,19 @@
     <description>Recent content in Markets on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/markets/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A broker simulation leveraging the predictive bean model</title>
+      <link>/2018/05/a-broker-simulation-leveraging-the-predictive-bean-model/</link>
+      <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/05/a-broker-simulation-leveraging-the-predictive-bean-model/</guid>
+      <description>Hi there! It’s been a while! Sorry for the delay on posting, but things have been a bit crazy with the transition between the end of the semester at UA and moving into Summer research projects! I’ve also become a little obsessed with the Tidy Tuesday challenge on Twitter - it’s a cool project for the #r4ds (R for Data Science) community that sends out weekly datasets that Twitterfolks can munge and visualize with the fantastic tidyverse packages.</description>
+    </item>
     
     <item>
       <title>Preprocessing Bean Data (on the road to Machine Learning)</title>
