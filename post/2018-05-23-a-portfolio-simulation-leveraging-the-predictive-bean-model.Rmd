@@ -11,7 +11,7 @@ tags:
   - markets
   - simulation  
 summary: >
-  Here, I show a demonstration of a simple investing/selling simulation based on historic bean data and the Random Forest model we built two posts ago. The basic premise is to see how much money we could make if we had had access to the predictive model int he 80s, and purchased beans based on it. 
+  Here, I show a demonstration of a simple investing/selling simulation based on historic bean data and the Random Forest model we built two posts ago. The basic premise is to see how much money we could make if we had had access to the predictive model in the 80s to 2011, and had purchased and sold beans based on the predictions it makes. 
 ---
 
 ## Hi there!  

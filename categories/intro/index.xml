@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Intro on Keaton Wilson</title>
-    <link>/categories/intro/</link>
+    <link>https://keatonwilson.github.io/categories/intro/</link>
     <description>Recent content in Intro on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 19 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/intro/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://keatonwilson.github.io/categories/intro/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Introduction (a more involved ‘hello world’). </title>
-      <link>/2018/03/introduction-a-more-involved-hello-world/</link>
+      <link>https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/</link>
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/introduction-a-more-involved-hello-world/</guid>
+      <guid>https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/</guid>
       <description>Hello! I’m an ecologist and data scientist working at the University of Arizona in Tucson. I’m currently a postdoctoral fellow with the National Institute of Health (NIH), but as that position is coming to a close, am on the job market looking for new projects and challenges.
 Throughout my fellowship at the University of Arizona, I’ve become increasingly interested in data science, and have taken the plunge in applying some of the techniques I’ve developed a scientist to outside projects.</description>
     </item>

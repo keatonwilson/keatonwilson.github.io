@@ -2,79 +2,79 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bean Project on Keaton Wilson</title>
-    <link>/categories/bean-project/</link>
+    <link>https://keatonwilson.github.io/categories/bean-project/</link>
     <description>Recent content in Bean Project on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 23 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/bean-project/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://keatonwilson.github.io/categories/bean-project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>A broker simulation leveraging the predictive bean model</title>
-      <link>/2018/05/a-broker-simulation-leveraging-the-predictive-bean-model/</link>
+      <link>https://keatonwilson.github.io/2018/05/a-broker-simulation-leveraging-the-predictive-bean-model/</link>
       <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/05/a-broker-simulation-leveraging-the-predictive-bean-model/</guid>
+      <guid>https://keatonwilson.github.io/2018/05/a-broker-simulation-leveraging-the-predictive-bean-model/</guid>
       <description>Hi there! It’s been a while! Sorry for the delay on posting, but things have been a bit crazy with the transition between the end of the semester at UA and moving into Summer research projects! I’ve also become a little obsessed with the Tidy Tuesday challenge on Twitter - it’s a cool project for the #r4ds (R for Data Science) community that sends out weekly datasets that Twitterfolks can munge and visualize with the fantastic tidyverse packages.</description>
     </item>
     
     <item>
       <title>Class Market Share - A better visualization</title>
-      <link>/2018/05/class-market-share-a-better-visualization/</link>
+      <link>https://keatonwilson.github.io/2018/05/class-market-share-a-better-visualization/</link>
       <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/05/class-market-share-a-better-visualization/</guid>
+      <guid>https://keatonwilson.github.io/2018/05/class-market-share-a-better-visualization/</guid>
       <description>Better viz Anna Cates, a blog reader and soil ecologist working at the University of Wisconsin-Madison had a great suggestion for visualizing market-share change over time for different varietals - the stacked bar chart! I thought I’d write a brief post with some code!
 #packages library(tidyverse) library(lubridate) #importing the master data set we&amp;#39;ve been working with bean_master_import = read_csv(file = &amp;quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&amp;quot;) bean_master_import_bar = bean_master_import %&amp;gt;% mutate(month = month(date), class = factor(class)) %&amp;gt;% group_by(year, month, class) %&amp;gt;% summarize(monthly_mean_market_share = mean(class_market_share)) #Making a new column of just the beginning of each month, since we&amp;#39;re binning by month beg_month_date = paste(bean_master_import_bar$year, bean_master_import_bar$month, rep(1, length(bean_master_import_bar$year)), sep = &amp;quot;-&amp;quot;) bean_master_import_bar$beg_month_date = ymd(beg_month_date) #Filtering to get rid of some of the noise bean_master_import_bar %&amp;gt;% filter(monthly_mean_market_share &amp;lt; 0.</description>
     </item>
     
     <item>
       <title>Data Exploration and Visualization on Bean Market Data</title>
-      <link>/2018/05/data-exploration-and-visualization-on-bean-market-data/</link>
+      <link>https://keatonwilson.github.io/2018/05/data-exploration-and-visualization-on-bean-market-data/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/05/data-exploration-and-visualization-on-bean-market-data/</guid>
+      <guid>https://keatonwilson.github.io/2018/05/data-exploration-and-visualization-on-bean-market-data/</guid>
       <description>Data Exploration I wanted to take a break this week from Machine Learning and prediction algorithms on the bean data and do a bit of data exploration and visualization of what is a pretty rich data set. The idea here is a bit of a conceptual switch from what we’ve been exploring - here, I’m interested in picking apart trends in the market, and examining relationships between the variables.
 First, let’s import the data from github and get the appropriate packages loaded:</description>
     </item>
     
     <item>
       <title>Bean Market Predictions using Machine Learning Algorithms</title>
-      <link>/2018/04/bean-market-predictions-using-machine-learning-algorithms/</link>
+      <link>https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/</link>
       <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/04/bean-market-predictions-using-machine-learning-algorithms/</guid>
+      <guid>https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/</guid>
       <description>Goals As I’ve discussed in earlier posts, the basic premise of this project was to use a nice (but messy) dataset from the USDA on domestic bean markets to explore a variety of different avenues of analysis, visualization and data exploration. One of the main goals of this project was to see if I could build some machine learning models that do a good job of predicting future prices of different classes of beans.</description>
     </item>
     
     <item>
       <title>Preprocessing Bean Data (on the road to Machine Learning)</title>
-      <link>/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</link>
+      <link>https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</guid>
+      <guid>https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</guid>
       <description>The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
 More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?</description>
     </item>
     
     <item>
       <title>Bean munging and Excel Wrangling</title>
-      <link>/2018/03/bean-munging-and-excel-wrangling/</link>
+      <link>https://keatonwilson.github.io/2018/03/bean-munging-and-excel-wrangling/</link>
       <pubDate>Tue, 20 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/bean-munging-and-excel-wrangling/</guid>
+      <guid>https://keatonwilson.github.io/2018/03/bean-munging-and-excel-wrangling/</guid>
       <description>Messy Excel Files So, as I discussed last time, the first big hurdle in starting to explore the domestic dry bean market data was overcoming the terror of working with a bunch of really messy, really gnarly excel files.
 The main one looks like this:Lots of problems, right? The data are in multiple sheets in a single workbook, they’re not uniform, etc. It’s an R-user’s nightmare, but the reality is that data often look like this.</description>
     </item>
     
     <item>
       <title>An overview of the bean project</title>
-      <link>/2018/03/an-overview-of-the-bean-project/</link>
+      <link>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</link>
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/an-overview-of-the-bean-project/</guid>
+      <guid>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</guid>
       <description>Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.</description>
     </item>
     
