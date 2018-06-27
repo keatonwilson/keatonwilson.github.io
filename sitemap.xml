@@ -3,159 +3,170 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://keatonwilson.github.io/2018/05/a-broker-simulation-leveraging-the-predictive-bean-model/</loc>
+    <loc>/2018/06/updated-bean-model-and-some-additional-analytics/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/05/a-broker-simulation-leveraging-the-predictive-bean-model/</loc>
     <lastmod>2018-05-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/2018/05/class-market-share-a-better-visualization/</loc>
+    <loc>/2018/05/class-market-share-a-better-visualization/</loc>
     <lastmod>2018-05-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/2018/05/data-exploration-and-visualization-on-bean-market-data/</loc>
+    <loc>/2018/05/data-exploration-and-visualization-on-bean-market-data/</loc>
     <lastmod>2018-05-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/2018/04/bean-market-predictions-using-machine-learning-algorithms/</loc>
+    <loc>/2018/04/bean-market-predictions-using-machine-learning-algorithms/</loc>
     <lastmod>2018-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</loc>
+    <loc>/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</loc>
     <lastmod>2018-04-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</loc>
+    <loc>/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</loc>
     <lastmod>2018-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/2018/03/bean-munging-and-excel-wrangling/</loc>
+    <loc>/2018/03/bean-munging-and-excel-wrangling/</loc>
     <lastmod>2018-03-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</loc>
+    <loc>/2018/03/an-overview-of-the-bean-project/</loc>
     <lastmod>2018-03-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/</loc>
+    <loc>/2018/03/introduction-a-more-involved-hello-world/</loc>
     <lastmod>2018-03-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/archives/</loc>
+    <loc>/tags/analytics/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/categories/bean-project/</loc>
-    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+    <loc>/archives/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/tags/beans/</loc>
-    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+    <loc>/categories/bean-project/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/categories/</loc>
-    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+    <loc>/tags/beans/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/categories/data-science/</loc>
-    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+    <loc>/categories/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/tags/exploration/</loc>
+    <loc>/categories/data-science/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/exploration/</loc>
     <lastmod>2018-05-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/categories/general/</loc>
+    <loc>/categories/general/</loc>
     <lastmod>2018-03-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/categories/intro/</loc>
+    <loc>/categories/intro/</loc>
     <lastmod>2018-03-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/</loc>
-    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+    <loc>/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/categories/machine-learning/</loc>
-    <lastmod>2018-04-21T00:00:00+00:00</lastmod>
+    <loc>/categories/machine-learning/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/tags/markets/</loc>
-    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+    <loc>/tags/markets/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/tags/munging/</loc>
-    <lastmod>2018-03-20T00:00:00+00:00</lastmod>
+    <loc>/tags/munging/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/post/</loc>
-    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+    <loc>/post/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/tags/prediction/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
+    <loc>/tags/prediction/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/tags/science/</loc>
+    <loc>/tags/science/</loc>
     <lastmod>2018-03-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/tags/simulation/</loc>
+    <loc>/tags/simulation/</loc>
     <lastmod>2018-05-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/tags/</loc>
-    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+    <loc>/tags/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/tags/visualization/</loc>
+    <loc>/tags/visualization/</loc>
     <lastmod>2018-05-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://keatonwilson.github.io/tags/vocs/</loc>
+    <loc>/tags/vocs/</loc>
     <lastmod>2018-03-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
