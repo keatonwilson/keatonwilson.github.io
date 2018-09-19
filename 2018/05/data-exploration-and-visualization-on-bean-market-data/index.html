@@ -276,7 +276,7 @@ library(tidyverse)
 
 
 #importing the master data set we&#39;ve been working with
-bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&quot;)
+bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv?token=AefUVJns3Rn5W9UiDzbkOhHnKJFGyqHNks5bq6oTwA%3D%3D&quot;)
 
 glimpse(bean_master_import)</code></pre>
 <pre><code>## Observations: 8,407
@@ -349,7 +349,7 @@ ggplot(aes(x = date, y = price)) +
 ##  2 Dark_Red_Kidney               0.647 
 ##  3 Garbanzo                      0.567 
 ##  4 Blackeye                      0.534 
-##  5 Kidney                        0.500 
+##  5 Kidney                        0.5   
 ##  6 Black                         0.254 
 ##  7 Pink                          0.197 
 ##  8 Grt_Northern                  0.177 
@@ -385,7 +385,7 @@ ggplot(aes(x = date, y = class_market_share, color = factor(class))) +
   ylab(&quot;Percentage Market Share (%)&quot;) +
   scale_color_discrete(name = &quot;Class&quot;) +
   theme_classic()</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39;</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
 <p><img src="/post/2018-05-02-data-exploration-and-visualization-on-bean-market-data_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>We can see that a lot has changed since the 80s. 2010 has varietals that more equally contribute to the market compared to historic valuees. Navy beans seem to be on the rise - with a steady increase in marketshare since 2000.</p>
 </div>
@@ -687,6 +687,24 @@ Lots of information here! We’ve plotted all combination of prices of different
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/">
+                <h3 class="media-heading">Classification Workshop: Introduction to Machine Learning in R with caret</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Introduction to Machine Learning in R with caret Part 1 - What is machine learning? What are the tenets, what is the basic workflow? Discussion - two questions (5-minutes with the person sitting next to you - then we’ll come together and discuss as a group) What is machine learning?
+ How is it different than statistics?  Some important things to know and think about: Prediction is usually more important than explanation</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="/2018/06/updated-bean-model-and-some-additional-analytics/">
                 <h3 class="media-heading">Updated Bean Model and some additional analytics</h3>
               </a>
@@ -730,7 +748,7 @@ Lots of information here! We’ve plotted all combination of prices of different
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather">Better viz Anna Cates, a blog reader and soil ecologist working at the University of Wisconsin-Madison had a great suggestion for visualizing market-share change over time for different varietals - the stacked bar chart! I thought I’d write a brief post with some code!
-#packages library(tidyverse) library(lubridate) #importing the master data set we&#39;ve been working with bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv&quot;) bean_master_import_bar = bean_master_import %&gt;% mutate(month = month(date), class = factor(class)) %&gt;% group_by(year, month, class) %&gt;% summarize(monthly_mean_market_share = mean(class_market_share)) #Making a new column of just the beginning of each month, since we&#39;re binning by month beg_month_date = paste(bean_master_import_bar$year, bean_master_import_bar$month, rep(1, length(bean_master_import_bar$year)), sep = &quot;-&quot;) bean_master_import_bar$beg_month_date = ymd(beg_month_date) #Filtering to get rid of some of the noise bean_master_import_bar %&gt;% filter(monthly_mean_market_share &lt; 0.</div>
+#packages library(tidyverse) library(lubridate) #importing the master data set we&#39;ve been working with bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv?token=AefUVJns3Rn5W9UiDzbkOhHnKJFGyqHNks5bq6oTwA%3D%3D&quot;) bean_master_import_bar = bean_master_import %&gt;% mutate(month = month(date), class = factor(class)) %&gt;% group_by(year, month, class) %&gt;% summarize(monthly_mean_market_share = mean(class_market_share)) #Making a new column of just the beginning of each month, since we&#39;re binning by month beg_month_date = paste(bean_master_import_bar$year, bean_master_import_bar$month, rep(1, length(bean_master_import_bar$year)), sep = &quot;-&quot;) bean_master_import_bar$beg_month_date = ymd(beg_month_date) #Filtering to get rid of some of the noise bean_master_import_bar %&gt;% filter(monthly_mean_market_share &lt; 0.</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -841,24 +859,6 @@ The main one looks like this:Lots of problems, right? The data are in multiple s
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="/2018/03/introduction-a-more-involved-hello-world/">
-                <h3 class="media-heading">Introduction (a more involved ‘hello world’). </h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Mar 3, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Hello! I’m an ecologist and data scientist working at the University of Arizona in Tucson. I’m currently a postdoctoral fellow with the National Institute of Health (NIH), but as that position is coming to a close, am on the job market looking for new projects and challenges.
-Throughout my fellowship at the University of Arizona, I’ve become increasingly interested in data science, and have taken the plunge in applying some of the techniques I’ve developed a scientist to outside projects.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -866,7 +866,7 @@ Throughout my fellowship at the University of Arizona, I’ve become increasingl
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         10 posts found
+         11 posts found
       </p>
     </div>
   </div>

@@ -1,0 +1,1033 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
+    <title>Classification Workshop: Introduction to Machine Learning in R with caret</title>
+    <meta name="author" content="Keaton Wilson">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="Introduction to Machine Learning in R with caret Part 1 - What is machine learning? What are the tenets, what is the basic workflow? Discussion - two questions (5-minutes with the person sitting next to you - then we’ll come together and discuss as a group) What is machine learning?
+ How is it different than statistics?  Some important things to know and think about: Prediction is usually more important than explanation">
+    <meta property="og:description" content="Introduction to Machine Learning in R with caret Part 1 - What is machine learning? What are the tenets, what is the basic workflow? Discussion - two questions (5-minutes with the person sitting next to you - then we’ll come together and discuss as a group) What is machine learning?
+ How is it different than statistics?  Some important things to know and think about: Prediction is usually more important than explanation">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Classification Workshop: Introduction to Machine Learning in R with caret">
+    <meta property="og:url" content="/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/">
+    <meta property="og:site_name" content="Keaton Wilson">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Keaton Wilson">
+    <meta name="twitter:description" content="Introduction to Machine Learning in R with caret Part 1 - What is machine learning? What are the tenets, what is the basic workflow? Discussion - two questions (5-minutes with the person sitting next to you - then we’ll come together and discuss as a group) What is machine learning?
+ How is it different than statistics?  Some important things to know and think about: Prediction is usually more important than explanation">
+    
+      <meta name="twitter:creator" content="@keatonwilson">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-116941718-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Keaton Wilson</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Keaton Wilson</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>Ecologist, data scientist, and creator</strong>. Over a decade of experience performing independent and collaborative research and qualitative and quantitative data analysis to generate thoughtful, intuitive insights that engage a broad audience. Creative and novel approaches to data visualization, analysis and design.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/keatonwilson">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.twitter.com/keatonwilson">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://www.keatonwilson.net">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-"></i>
+      
+      <span class="sidebar-button-desc">Main Website</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Classification Workshop: Introduction to Machine Learning in R with caret
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-09-19T00:00:00Z">
+        
+  September 19, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/workshop">Workshop</a>, 
+    
+      <a class="category-link" href="/categories/data">data</a>, 
+    
+      <a class="category-link" href="/categories/machin">machin</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <div id="introduction-to-machine-learning-in-r-with-caret" class="section level1">
+<h1>Introduction to Machine Learning in R with caret</h1>
+<hr />
+<div id="part-1---what-is-machine-learning-what-are-the-tenets-what-is-the-basic-workflow" class="section level2">
+<h2>Part 1 - What is machine learning? What are the tenets, what is the basic workflow?</h2>
+<div id="discussion---two-questions-5-minutes-with-the-person-sitting-next-to-you---then-well-come-together-and-discuss-as-a-group" class="section level3">
+<h3>Discussion - two questions (5-minutes with the person sitting next to you - then we’ll come together and discuss as a group)</h3>
+<ol style="list-style-type: decimal">
+<li>What is machine learning?<br />
+</li>
+<li>How is it different than statistics?</li>
+</ol>
+<div id="some-important-things-to-know-and-think-about" class="section level4">
+<h4>Some important things to know and think about:</h4>
+<ol style="list-style-type: decimal">
+<li>Prediction is usually more important than explanation<br />
+</li>
+<li>Two major types of problems - regression and classification<br />
+</li>
+<li>Splitting the data to prevent overfitting</li>
+</ol>
+</div>
+</div>
+<div id="classifcation-problem---wine-varietal-identifier" class="section level3">
+<h3>Classifcation Problem - Wine varietal identifier</h3>
+<p>Here is the scenario: we’ve been contacted by a famous vignter in Italy because she suspects that one of the prized varietals (a rare version of <em>Aglianicone</em> that her family has grown for 7 generations) from her vinyard has been stolen, and is being grown and sold to make competitively delicious wine in the United States. The competing winemaker claims that the varietal being grown in the US is from a closely related varietal from the same region, that he obtained legally.</p>
+<p>Our customer has hired us to develop an algorithm to determine the likelihood that this is the wine being sold by the competitor was made from the varietal grown on her farm. Unfortunately, we don’t have fancy genomic data to work with, but she has provided us with chemical profiles of a bunch of different wines made from both her grapes and two varietals that the competitor claims to be working with. The owner of the competing US vinyard has graciously provided us with the same type of data from a bunch of his wines to make comparisons on - he’s looking to clear his name (and probably doesn’t also believe that an algorithm can predict whether or not a given wine comes from a certain regional varietal)</p>
+</div>
+<div id="part-2---examining-the-data" class="section level3">
+<h3>Part 2 - Examining the Data</h3>
+<pre class="r"><code># Getting libraries we need loaded
+library(caret)
+library(tidyverse)
+
+#Reading in the data from the github repo
+wine_train = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/classification_workshop_1/master/data/wine_train.csv&quot;)
+
+#https://bit.ly/2xoqHVZ
+#
+wine_test = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/classification_workshop_1/master/data/wine_test.csv&quot;)
+
+#https://bit.ly/2NRXgpp
+
+
+#Overviews
+glimpse(wine_train)</code></pre>
+<pre><code>## Observations: 168
+## Variables: 15
+## $ varietal        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
+## $ alcohol         &lt;dbl&gt; 14.23, 13.20, 13.16, 14.37, 13.24, 14.20, 14.3...
+## $ malic_acid      &lt;dbl&gt; 1.71, 1.78, 2.36, 1.95, 2.59, 1.76, 1.87, 2.15...
+## $ ash             &lt;dbl&gt; 2.43, 2.14, 2.67, 2.50, 2.87, 2.45, 2.45, 2.61...
+## $ alkalinity      &lt;dbl&gt; 15.6, 11.2, 18.6, 16.8, 21.0, 15.2, 14.6, 17.6...
+## $ magnesium       &lt;int&gt; 127, 100, 101, 113, 118, 112, 96, 121, 97, 98,...
+## $ total_phenol    &lt;dbl&gt; 2.80, 2.65, 2.80, 3.85, 2.80, 3.27, 2.50, 2.60...
+## $ flavanoids      &lt;dbl&gt; 3.06, 2.76, 3.24, 3.49, 2.69, 3.39, 2.52, 2.51...
+## $ nonflav_phenols &lt;dbl&gt; 0.28, 0.26, 0.30, 0.24, 0.39, 0.34, 0.30, 0.31...
+## $ proantho        &lt;dbl&gt; 2.29, 1.28, 2.81, 2.18, 1.82, 1.97, 1.98, 1.25...
+## $ color           &lt;dbl&gt; 5.64, 4.38, 5.68, 7.80, 4.32, 6.75, 5.25, 5.05...
+## $ hue             &lt;dbl&gt; 1.04, 1.05, 1.03, 0.86, 1.04, 1.05, 1.02, 1.06...
+## $ OD              &lt;dbl&gt; 3.92, 3.40, 3.17, 3.45, 2.93, 2.85, 3.58, 3.58...
+## $ proline         &lt;int&gt; 1065, 1050, 1185, 1480, 735, 1450, 1290, 1295,...
+## $ id              &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,...</code></pre>
+<pre class="r"><code>summary(wine_train)</code></pre>
+<pre><code>##     varietal        alcohol        malic_acid         ash       
+##  Min.   :1.000   Min.   :11.03   Min.   :0.740   Min.   :1.360  
+##  1st Qu.:1.000   1st Qu.:12.36   1st Qu.:1.610   1st Qu.:2.210  
+##  Median :2.000   Median :13.05   Median :1.885   Median :2.360  
+##  Mean   :1.946   Mean   :13.02   Mean   :2.369   Mean   :2.369  
+##  3rd Qu.:3.000   3rd Qu.:13.70   3rd Qu.:3.132   3rd Qu.:2.565  
+##  Max.   :3.000   Max.   :14.83   Max.   :5.800   Max.   :3.230  
+##    alkalinity      magnesium      total_phenol     flavanoids   
+##  Min.   :10.60   Min.   : 70.0   Min.   :0.980   Min.   :0.340  
+##  1st Qu.:17.07   1st Qu.: 88.0   1st Qu.:1.715   1st Qu.:1.090  
+##  Median :19.50   Median : 98.0   Median :2.335   Median :2.035  
+##  Mean   :19.49   Mean   : 99.8   Mean   :2.282   Mean   :1.997  
+##  3rd Qu.:21.50   3rd Qu.:107.2   3rd Qu.:2.800   3rd Qu.:2.865  
+##  Max.   :30.00   Max.   :162.0   Max.   :3.880   Max.   :5.080  
+##  nonflav_phenols     proantho         color             hue        
+##  Min.   :0.1400   Min.   :0.410   Min.   : 1.280   Min.   :0.4800  
+##  1st Qu.:0.2700   1st Qu.:1.235   1st Qu.: 3.147   1st Qu.:0.7800  
+##  Median :0.3400   Median :1.535   Median : 4.850   Median :0.9600  
+##  Mean   :0.3664   Mean   :1.583   Mean   : 5.100   Mean   :0.9534  
+##  3rd Qu.:0.4500   3rd Qu.:1.952   3rd Qu.: 6.263   3rd Qu.:1.1200  
+##  Max.   :0.6600   Max.   :3.580   Max.   :13.000   Max.   :1.7100  
+##        OD           proline             id        
+##  Min.   :1.270   Min.   : 278.0   Min.   :  1.00  
+##  1st Qu.:1.905   1st Qu.: 500.0   1st Qu.: 45.75  
+##  Median :2.770   Median : 660.0   Median : 90.50  
+##  Mean   :2.599   Mean   : 745.6   Mean   : 90.14  
+##  3rd Qu.:3.172   3rd Qu.: 996.2   3rd Qu.:136.25  
+##  Max.   :4.000   Max.   :1547.0   Max.   :178.00</code></pre>
+<pre class="r"><code>#Checking for NAs
+sum(is.na(wine_train))</code></pre>
+<pre><code>## [1] 0</code></pre>
+<p>Ok, so this looks good. We have our item we want to classify in column 1, and all of our features in the rest. For our varietal numbers, 1 and 2 are the local varietals not owned by our customer, but varietal 3 is her special grape. So we’re looking for the presence of any wines made from varietal 3 in the test set.</p>
+<p><strong>What do we need to do before we jump into to trying to build some algorithms?</strong></p>
+<p>Preprocess! In particular, we need to center and scale the data. <em>caret</em> can do this for us.</p>
+</div>
+<div id="part-3---preprocessing" class="section level3">
+<h3>Part 3 - Preprocessing</h3>
+<pre class="r"><code>#Setting up the preprocessing algorithm
+set.seed(42)
+pp = preProcess(wine_train[,-1], method = c(&quot;center&quot;, &quot;scale&quot;), outcome = wine_train$varietal)
+
+wine_train_pp = predict(pp, wine_train)
+wine_train_pp</code></pre>
+<pre><code>## # A tibble: 168 x 15
+##    varietal alcohol malic_acid    ash alkalinity magnesium total_phenol
+##       &lt;int&gt;   &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+##  1        1   1.48    -0.584    0.220     -1.15     1.88          0.823
+##  2        1   0.225   -0.522   -0.831     -2.44     0.0140        0.585
+##  3        1   0.176   -0.00786  1.09      -0.264    0.0830        0.823
+##  4        1   1.65    -0.371    0.474     -0.794    0.912         2.49 
+##  5        1   0.274    0.196    1.82       0.444    1.26          0.823
+##  6        1   1.45    -0.540    0.293     -1.27     0.843         1.57 
+##  7        1   1.68    -0.442    0.293     -1.44    -0.262         0.346
+##  8        1   1.28    -0.194    0.873     -0.558    1.46          0.505
+##  9        1   2.22    -0.646   -0.722     -1.62    -0.193         0.823
+## 10        1   1.03    -0.903   -0.360     -1.03    -0.124         1.11 
+## # ... with 158 more rows, and 8 more variables: flavanoids &lt;dbl&gt;,
+## #   nonflav_phenols &lt;dbl&gt;, proantho &lt;dbl&gt;, color &lt;dbl&gt;, hue &lt;dbl&gt;,
+## #   OD &lt;dbl&gt;, proline &lt;dbl&gt;, id &lt;dbl&gt;</code></pre>
+<pre class="r"><code>#We also need to add this same processing algorithm to the test data. 
+wine_test_pp = predict(pp, wine_test)
+
+#We also need to make the varietal category a factor in both datasets
+wine_train_pp = wine_train_pp %&gt;%
+  mutate(varietal = factor(varietal))</code></pre>
+</div>
+</div>
+</div>
+<div id="part-4---model-testing-and-tuning" class="section level1">
+<h1>Part 4 - Model Testing and Tuning</h1>
+<p>There are a ton of classification models to choose from - when starting ML stuff, this can be a really daunting part of the thing. Today, we’re going to explore a couple of bread-and-butter models:<br />
+1. k-nn - nearest neighbord classifier<br />
+2. Naive Bayes<br />
+3. Decision Trees<br />
+4. Support Vector Machines</p>
+<p>I’m not going to go into the math of how all of these operate at all. It’s the beyond the scope of this workshop, but here is a good overview: <a href="https://medium.com/@sifium/machine-learning-types-of-classification-9497bd4f2e14" class="uri">https://medium.com/@sifium/machine-learning-types-of-classification-9497bd4f2e14</a></p>
+<p>One thing that we need to talk about briefly is resampling - this is the method we’re going to use to assess how ‘good’ a model is, without applying it to the test data. There are a couple of main ways to do this:<br />
+1. bootstrapping - random sampling within the dataset with replacement. Pulling a bunch of subsets of the data and looking at how the model performs across these subsets.<br />
+2. Repeated n-fold cross-validation - does a bunch of splitting into training and test data <strong>within</strong> the training set, and then averages accuracy or RMSE across all these little mini-sets.</p>
+<p>We’re going to use the second type.</p>
+<pre class="r"><code># setting up the control object to feed to all of the subsequent models
+fit_control = trainControl(method = &quot;repeatedcv&quot;, number = 5, repeats = 5)
+
+#models
+#knn
+knn_model = train(varietal ~ ., data = wine_train_pp,
+                  method = &quot;knn&quot;, trControl = fit_control)
+#naive bays
+bayes_model = train(varietal ~ ., data = wine_train_pp,
+                  method = &quot;nb&quot;, trControl = fit_control)
+
+#CART
+cart_model = train(varietal ~ ., data = wine_train_pp,
+                  method = &quot;rpart&quot;, trControl = fit_control)
+
+#svm 
+svm_model = train(varietal ~ ., data = wine_train_pp,
+                  method = &quot;svmRadial&quot;, trControl = fit_control)</code></pre>
+<p>The models default to using accuracy as the score to determine how good they are. Accuracy is <strong>the percentage of the predictions made by the model that are correct</strong>.</p>
+<p>Let’s comapre models</p>
+<pre class="r"><code>results = resamples(list(knn = knn_model, bayes = bayes_model, cart = cart_model, svm = svm_model))
+summary(results)</code></pre>
+<pre><code>## 
+## Call:
+## summary.resamples(object = results)
+## 
+## Models: knn, bayes, cart, svm 
+## Number of resamples: 25 
+## 
+## Accuracy 
+##            Min.  1st Qu.    Median      Mean 3rd Qu. Max. NA&#39;s
+## knn   0.9117647 0.969697 0.9714286 0.9761793       1    1    0
+## bayes 0.9696970 1.000000 1.0000000 0.9964349       1    1    0
+## cart  0.9696970 0.969697 1.0000000 0.9867380       1    1    0
+## svm   0.9696970 1.000000 1.0000000 0.9952228       1    1    0
+## 
+## Kappa 
+##            Min.   1st Qu.    Median      Mean 3rd Qu. Max. NA&#39;s
+## knn   0.8680466 0.9537815 0.9569496 0.9641544       1    1    0
+## bayes 0.9539106 1.0000000 1.0000000 0.9945892       1    1    0
+## cart  0.9539106 0.9542936 1.0000000 0.9799294       1    1    0
+## svm   0.9542936 1.0000000 1.0000000 0.9927833       1    1    0</code></pre>
+<pre class="r"><code>dotplot(results)</code></pre>
+<p><img src="/post/2018-09-19-classification-workshop-introduction-to-machine-learning-in-r-with-caret_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>svm_model</code></pre>
+<pre><code>## Support Vector Machines with Radial Basis Function Kernel 
+## 
+## 168 samples
+##  14 predictor
+##   3 classes: &#39;1&#39;, &#39;2&#39;, &#39;3&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold, repeated 5 times) 
+## Summary of sample sizes: 135, 134, 133, 135, 135, 134, ... 
+## Resampling results across tuning parameters:
+## 
+##   C     Accuracy   Kappa    
+##   0.25  0.9893028  0.9838228
+##   0.50  0.9904792  0.9855912
+##   1.00  0.9952228  0.9927833
+## 
+## Tuning parameter &#39;sigma&#39; was held constant at a value of 0.05224556
+## Accuracy was used to select the optimal model using the largest value.
+## The final values used for the model were sigma = 0.05224556 and C = 1.</code></pre>
+<p>We can also look at the relative amount of false negatives and false positives with a confusion matrix.</p>
+<pre class="r"><code>predictions = predict(svm_model, wine_train_pp)
+confusionMatrix(predictions, wine_train_pp$varietal)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction  1  2  3
+##          1 56  0  0
+##          2  0 65  0
+##          3  0  0 47
+## 
+## Overall Statistics
+##                                      
+##                Accuracy : 1          
+##                  95% CI : (0.9783, 1)
+##     No Information Rate : 0.3869     
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16  
+##                                      
+##                   Kappa : 1          
+##  Mcnemar&#39;s Test P-Value : NA         
+## 
+## Statistics by Class:
+## 
+##                      Class: 1 Class: 2 Class: 3
+## Sensitivity            1.0000   1.0000   1.0000
+## Specificity            1.0000   1.0000   1.0000
+## Pos Pred Value         1.0000   1.0000   1.0000
+## Neg Pred Value         1.0000   1.0000   1.0000
+## Prevalence             0.3333   0.3869   0.2798
+## Detection Rate         0.3333   0.3869   0.2798
+## Detection Prevalence   0.3333   0.3869   0.2798
+## Balanced Accuracy      1.0000   1.0000   1.0000</code></pre>
+<p>Not particularly informative, given the model did a 100% accurate job of predicting on the training-data, but you get the gist.</p>
+<div id="part-5---using-the-model-on-the-test-data." class="section level3">
+<h3>Part 5 - Using the model on the test data.</h3>
+<pre class="r"><code>wine_test_pp$pred = predict(svm_model, wine_test_pp)
+
+#What is your conclusion?
+wine_test_pp$pred</code></pre>
+<pre><code>##  [1] 1 1 2 1 3 2 2 2 2 2
+## Levels: 1 2 3</code></pre>
+</div>
+<div id="part-6---continuing-practice" class="section level3">
+<h3>Part 6 - Continuing Practice</h3>
+<p>Some resources if you want to get better at this:<br />
+1. Kaggle - an online community of data scientists - lots of cool datasets to play with, and competitions!<br />
+2. www.datacamp.com - great series of lessons on machine learning, including classification and regression, with way deeper dives on the power of caret and other packages (python too!)<br />
+3. Machine Learning with R - Brett Lantz. Great book!</p>
+</div>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/wine/">wine</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/analytics/">analytics</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/prediction/">prediction</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/06/updated-bean-model-and-some-additional-analytics/" data-tooltip="Updated Bean Model and some additional analytics">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Keaton Wilson. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/06/updated-bean-model-and-some-additional-analytics/" data-tooltip="Updated Bean Model and some additional analytics">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=%2F2018%2F09%2Fclassification-workshop-introduction-to-machine-learning-in-r-with-caret%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2F2018%2F09%2Fclassification-workshop-introduction-to-machine-learning-in-r-with-caret%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=%2F2018%2F09%2Fclassification-workshop-introduction-to-machine-learning-in-r-with-caret%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/9227bc4b073a60337b44d960c2d8d211?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Keaton Wilson</h4>
+    
+      <div id="about-card-bio"><strong>Ecologist, data scientist, and creator</strong>. Over a decade of experience performing independent and collaborative research and qualitative and quantitative data analysis to generate thoughtful, intuitive insights that engage a broad audience. Creative and novel approaches to data visualization, analysis and design.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        National Institute of Health PERT Research and Teaching Fellow
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Tucson, Arizona
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/">
+                <h3 class="media-heading">Classification Workshop: Introduction to Machine Learning in R with caret</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Introduction to Machine Learning in R with caret Part 1 - What is machine learning? What are the tenets, what is the basic workflow? Discussion - two questions (5-minutes with the person sitting next to you - then we’ll come together and discuss as a group) What is machine learning?
+ How is it different than statistics?  Some important things to know and think about: Prediction is usually more important than explanation</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/06/updated-bean-model-and-some-additional-analytics/">
+                <h3 class="media-heading">Updated Bean Model and some additional analytics</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Updating the predictive bean model with new data The predictive model we’ve been exploring so far is based on data from the USDA Economic Research Service, whose database only goes to ~2011. This is a lot of data we’re missing from 2011 to the present - something we would want to incorporate into the model to improve accuracy. I recent corresponded with someone at USDA and was able to track down the rest of the data, so I’m excited to present an updated model, some predictions, and some additional insights we can gain from visualizing the model output in a couple of ways.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/05/a-broker-simulation-leveraging-the-predictive-bean-model/">
+                <h3 class="media-heading">A broker simulation leveraging the predictive bean model</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Hi there! It’s been a while! Sorry for the delay on posting, but things have been a bit crazy with the transition between the end of the semester at UA and moving into Summer research projects! I’ve also become a little obsessed with the Tidy Tuesday challenge on Twitter - it’s a cool project for the #r4ds (R for Data Science) community that sends out weekly datasets that Twitterfolks can munge and visualize with the fantastic tidyverse packages.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/05/class-market-share-a-better-visualization/">
+                <h3 class="media-heading">Class Market Share - A better visualization</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Better viz Anna Cates, a blog reader and soil ecologist working at the University of Wisconsin-Madison had a great suggestion for visualizing market-share change over time for different varietals - the stacked bar chart! I thought I’d write a brief post with some code!
+#packages library(tidyverse) library(lubridate) #importing the master data set we&#39;ve been working with bean_master_import = read_csv(file = &quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv?token=AefUVJns3Rn5W9UiDzbkOhHnKJFGyqHNks5bq6oTwA%3D%3D&quot;) bean_master_import_bar = bean_master_import %&gt;% mutate(month = month(date), class = factor(class)) %&gt;% group_by(year, month, class) %&gt;% summarize(monthly_mean_market_share = mean(class_market_share)) #Making a new column of just the beginning of each month, since we&#39;re binning by month beg_month_date = paste(bean_master_import_bar$year, bean_master_import_bar$month, rep(1, length(bean_master_import_bar$year)), sep = &quot;-&quot;) bean_master_import_bar$beg_month_date = ymd(beg_month_date) #Filtering to get rid of some of the noise bean_master_import_bar %&gt;% filter(monthly_mean_market_share &lt; 0.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/05/data-exploration-and-visualization-on-bean-market-data/">
+                <h3 class="media-heading">Data Exploration and Visualization on Bean Market Data</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Data Exploration I wanted to take a break this week from Machine Learning and prediction algorithms on the bean data and do a bit of data exploration and visualization of what is a pretty rich data set. The idea here is a bit of a conceptual switch from what we’ve been exploring - here, I’m interested in picking apart trends in the market, and examining relationships between the variables.
+First, let’s import the data from github and get the appropriate packages loaded:</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/bean-market-predictions-using-machine-learning-algorithms/">
+                <h3 class="media-heading">Bean Market Predictions using Machine Learning Algorithms</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Goals As I’ve discussed in earlier posts, the basic premise of this project was to use a nice (but messy) dataset from the USDA on domestic bean markets to explore a variety of different avenues of analysis, visualization and data exploration. One of the main goals of this project was to see if I could build some machine learning models that do a good job of predicting future prices of different classes of beans.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/">
+                <h3 class="media-heading">Preprocessing Bean Data (on the road to Machine Learning)</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
+More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/">
+                <h3 class="media-heading">The ecologist jumps into the deep, scary waters of machine learning...</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Misconceptions About two years ago, when I started thinking more deeply about the possibility of a career in data science, I made a concerted effort to figure out where my gaps in knowledge were (a phrase we often overuse in science, in my opinion - it feels a bit tired) and what my weaknesses were. I felt strong in R, felt that I had experience munging messy data, and felt strong in my statistical background, but I had virtually no experience with machine learning (ML), which seemed to be all anyone was talking about when I got on the web and started looking at data science positions.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/bean-munging-and-excel-wrangling/">
+                <h3 class="media-heading">Bean munging and Excel Wrangling</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Messy Excel Files So, as I discussed last time, the first big hurdle in starting to explore the domestic dry bean market data was overcoming the terror of working with a bunch of really messy, really gnarly excel files.
+The main one looks like this:Lots of problems, right? The data are in multiple sheets in a single workbook, they’re not uniform, etc. It’s an R-user’s nightmare, but the reality is that data often look like this.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/an-overview-of-the-bean-project/">
+                <h3 class="media-heading">An overview of the bean project</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         11 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('/images/cover-1.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2018\/09\/classification-workshop-introduction-to-machine-learning-in-r-with-caret\/';
+          
+            this.page.identifier = '\/2018\/09\/classification-workshop-introduction-to-machine-learning-in-r-with-caret\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'keatonwilson.github.io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
