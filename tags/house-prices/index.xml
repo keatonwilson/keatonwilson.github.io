@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>House Prices on Keaton Wilson</title>
+    <link>/tags/house-prices/</link>
+    <description>Recent content in House Prices on Keaton Wilson</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 24 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/house-prices/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Web Scraping House Price Data</title>
+      <link>/2018/12/web-scraping-house-price-data/</link>
+      <pubDate>Mon, 24 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/12/web-scraping-house-price-data/</guid>
+      <description>Why scrape? Over at Sonoran Data Science, we created an interactive map that displays crime data for Tucson, AZ. Though these types of interactice plots are useful (and interesting), our ultimate goal was to also see if we could use this data in combination with with housing price data to build a machine learning model that predicts house prices in Tucson.
+One problem crept up: it’s hard to find data on single homes.</description>
+    </item>
+    
+  </channel>
+</rss>

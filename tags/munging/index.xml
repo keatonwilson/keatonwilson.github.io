@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Munging on Keaton Wilson</title>
-    <link>/tags/munging/</link>
+    <link>https://keatonwilson.github.io/tags/munging/</link>
     <description>Recent content in Munging on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/munging/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://keatonwilson.github.io/tags/munging/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Updated Bean Model and some additional analytics</title>
-      <link>/2018/06/updated-bean-model-and-some-additional-analytics/</link>
+      <link>https://keatonwilson.github.io/2018/06/updated-bean-model-and-some-additional-analytics/</link>
       <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/06/updated-bean-model-and-some-additional-analytics/</guid>
+      <guid>https://keatonwilson.github.io/2018/06/updated-bean-model-and-some-additional-analytics/</guid>
       <description>Updating the predictive bean model with new data The predictive model we’ve been exploring so far is based on data from the USDA Economic Research Service, whose database only goes to ~2011. This is a lot of data we’re missing from 2011 to the present - something we would want to incorporate into the model to improve accuracy. I recent corresponded with someone at USDA and was able to track down the rest of the data, so I’m excited to present an updated model, some predictions, and some additional insights we can gain from visualizing the model output in a couple of ways.</description>
     </item>
     
     <item>
       <title>Bean munging and Excel Wrangling</title>
-      <link>/2018/03/bean-munging-and-excel-wrangling/</link>
+      <link>https://keatonwilson.github.io/2018/03/bean-munging-and-excel-wrangling/</link>
       <pubDate>Tue, 20 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/bean-munging-and-excel-wrangling/</guid>
+      <guid>https://keatonwilson.github.io/2018/03/bean-munging-and-excel-wrangling/</guid>
       <description>Messy Excel Files So, as I discussed last time, the first big hurdle in starting to explore the domestic dry bean market data was overcoming the terror of working with a bunch of really messy, really gnarly excel files.
 The main one looks like this:Lots of problems, right? The data are in multiple sheets in a single workbook, they’re not uniform, etc. It’s an R-user’s nightmare, but the reality is that data often look like this.</description>
     </item>
     
     <item>
       <title>An overview of the bean project</title>
-      <link>/2018/03/an-overview-of-the-bean-project/</link>
+      <link>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</link>
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/an-overview-of-the-bean-project/</guid>
+      <guid>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</guid>
       <description>Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.</description>
     </item>
     

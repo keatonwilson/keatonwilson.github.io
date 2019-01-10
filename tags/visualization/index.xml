@@ -2,31 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Visualization on Keaton Wilson</title>
-    <link>/tags/visualization/</link>
+    <link>https://keatonwilson.github.io/tags/visualization/</link>
     <description>Recent content in Visualization on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://keatonwilson.github.io/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Machine Learning Algorithm for Tucson Housing Prices</title>
+      <link>https://keatonwilson.github.io/2019/01/machine-learning-algorithm-for-tucson-housing-prices/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://keatonwilson.github.io/2019/01/machine-learning-algorithm-for-tucson-housing-prices/</guid>
+      <description>Introduction The goal of this project has three main components: 1) to scrape a bunch of web data of house information in Tucson (prices, beds, baths, some other stuff), 2) to build a test a series of machine learning models that do a good job of accurately predicting the price a house will sell at and 3) taking this model and building a web interface that folks could use to plug in information on a house in Tucson and get an output.</description>
+    </item>
+    
+    <item>
       <title>Class Market Share - A better visualization</title>
-      <link>/2018/05/class-market-share-a-better-visualization/</link>
+      <link>https://keatonwilson.github.io/2018/05/class-market-share-a-better-visualization/</link>
       <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/05/class-market-share-a-better-visualization/</guid>
+      <guid>https://keatonwilson.github.io/2018/05/class-market-share-a-better-visualization/</guid>
       <description>Better viz Anna Cates, a blog reader and soil ecologist working at the University of Wisconsin-Madison had a great suggestion for visualizing market-share change over time for different varietals - the stacked bar chart! I thought I’d write a brief post with some code!
 #packages library(tidyverse) library(lubridate) #importing the master data set we&amp;#39;ve been working with bean_master_import = read_csv(file = &amp;quot;https://raw.githubusercontent.com/keatonwilson/beans/master/data/bean_master_joined.csv?token=AefUVJns3Rn5W9UiDzbkOhHnKJFGyqHNks5bq6oTwA%3D%3D&amp;quot;) bean_master_import_bar = bean_master_import %&amp;gt;% mutate(month = month(date), class = factor(class)) %&amp;gt;% group_by(year, month, class) %&amp;gt;% summarize(monthly_mean_market_share = mean(class_market_share)) #Making a new column of just the beginning of each month, since we&amp;#39;re binning by month beg_month_date = paste(bean_master_import_bar$year, bean_master_import_bar$month, rep(1, length(bean_master_import_bar$year)), sep = &amp;quot;-&amp;quot;) bean_master_import_bar$beg_month_date = ymd(beg_month_date) #Filtering to get rid of some of the noise bean_master_import_bar %&amp;gt;% filter(monthly_mean_market_share &amp;lt; 0.</description>
     </item>
     
     <item>
       <title>Data Exploration and Visualization on Bean Market Data</title>
-      <link>/2018/05/data-exploration-and-visualization-on-bean-market-data/</link>
+      <link>https://keatonwilson.github.io/2018/05/data-exploration-and-visualization-on-bean-market-data/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/05/data-exploration-and-visualization-on-bean-market-data/</guid>
+      <guid>https://keatonwilson.github.io/2018/05/data-exploration-and-visualization-on-bean-market-data/</guid>
       <description>Data Exploration I wanted to take a break this week from Machine Learning and prediction algorithms on the bean data and do a bit of data exploration and visualization of what is a pretty rich data set. The idea here is a bit of a conceptual switch from what we’ve been exploring - here, I’m interested in picking apart trends in the market, and examining relationships between the variables.
 First, let’s import the data from github and get the appropriate packages loaded:</description>
     </item>

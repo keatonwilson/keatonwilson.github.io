@@ -2,30 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Science on Keaton Wilson</title>
-    <link>/tags/science/</link>
+    <link>https://keatonwilson.github.io/tags/science/</link>
     <description>Recent content in Science on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/science/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://keatonwilson.github.io/tags/science/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Machine Learning Algorithm for Tucson Housing Prices</title>
+      <link>https://keatonwilson.github.io/2019/01/machine-learning-algorithm-for-tucson-housing-prices/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://keatonwilson.github.io/2019/01/machine-learning-algorithm-for-tucson-housing-prices/</guid>
+      <description>Introduction The goal of this project has three main components: 1) to scrape a bunch of web data of house information in Tucson (prices, beds, baths, some other stuff), 2) to build a test a series of machine learning models that do a good job of accurately predicting the price a house will sell at and 3) taking this model and building a web interface that folks could use to plug in information on a house in Tucson and get an output.</description>
+    </item>
+    
+    <item>
       <title>The ecologist jumps into the deep, scary waters of machine learning...</title>
-      <link>/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</link>
+      <link>https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</link>
       <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</guid>
+      <guid>https://keatonwilson.github.io/2018/03/the-ecologist-jumps-into-the-deep-scary-waters-of-machine-learning/</guid>
       <description>Misconceptions About two years ago, when I started thinking more deeply about the possibility of a career in data science, I made a concerted effort to figure out where my gaps in knowledge were (a phrase we often overuse in science, in my opinion - it feels a bit tired) and what my weaknesses were. I felt strong in R, felt that I had experience munging messy data, and felt strong in my statistical background, but I had virtually no experience with machine learning (ML), which seemed to be all anyone was talking about when I got on the web and started looking at data science positions.</description>
     </item>
     
     <item>
       <title>Introduction (a more involved ‘hello world’). </title>
-      <link>/2018/03/introduction-a-more-involved-hello-world/</link>
+      <link>https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/</link>
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/introduction-a-more-involved-hello-world/</guid>
+      <guid>https://keatonwilson.github.io/2018/03/introduction-a-more-involved-hello-world/</guid>
       <description>Hello! I’m an ecologist and data scientist working at the University of Arizona in Tucson. I’m currently a postdoctoral fellow with the National Institute of Health (NIH), but as that position is coming to a close, am on the job market looking for new projects and challenges.
 Throughout my fellowship at the University of Arizona, I’ve become increasingly interested in data science, and have taken the plunge in applying some of the techniques I’ve developed a scientist to outside projects.</description>
     </item>

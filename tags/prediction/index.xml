@@ -2,50 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Prediction on Keaton Wilson</title>
-    <link>/tags/prediction/</link>
+    <link>https://keatonwilson.github.io/tags/prediction/</link>
     <description>Recent content in Prediction on Keaton Wilson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/prediction/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://keatonwilson.github.io/tags/prediction/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Machine Learning Algorithm for Tucson Housing Prices</title>
+      <link>https://keatonwilson.github.io/2019/01/machine-learning-algorithm-for-tucson-housing-prices/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://keatonwilson.github.io/2019/01/machine-learning-algorithm-for-tucson-housing-prices/</guid>
+      <description>Introduction The goal of this project has three main components: 1) to scrape a bunch of web data of house information in Tucson (prices, beds, baths, some other stuff), 2) to build a test a series of machine learning models that do a good job of accurately predicting the price a house will sell at and 3) taking this model and building a web interface that folks could use to plug in information on a house in Tucson and get an output.</description>
+    </item>
+    
+    <item>
       <title>Classification Workshop: Introduction to Machine Learning in R with caret</title>
-      <link>/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/</link>
+      <link>https://keatonwilson.github.io/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/</guid>
+      <guid>https://keatonwilson.github.io/2018/09/classification-workshop-introduction-to-machine-learning-in-r-with-caret/</guid>
       <description>Introduction to Machine Learning in R with caret Part 1 - What is machine learning? What are the tenets, what is the basic workflow? Discussion - two questions (5-minutes with the person sitting next to you - then we’ll come together and discuss as a group) What is machine learning?
  How is it different than statistics?  Some important things to know and think about: Prediction is usually more important than explanation</description>
     </item>
     
     <item>
       <title>Updated Bean Model and some additional analytics</title>
-      <link>/2018/06/updated-bean-model-and-some-additional-analytics/</link>
+      <link>https://keatonwilson.github.io/2018/06/updated-bean-model-and-some-additional-analytics/</link>
       <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/06/updated-bean-model-and-some-additional-analytics/</guid>
+      <guid>https://keatonwilson.github.io/2018/06/updated-bean-model-and-some-additional-analytics/</guid>
       <description>Updating the predictive bean model with new data The predictive model we’ve been exploring so far is based on data from the USDA Economic Research Service, whose database only goes to ~2011. This is a lot of data we’re missing from 2011 to the present - something we would want to incorporate into the model to improve accuracy. I recent corresponded with someone at USDA and was able to track down the rest of the data, so I’m excited to present an updated model, some predictions, and some additional insights we can gain from visualizing the model output in a couple of ways.</description>
     </item>
     
     <item>
       <title>Preprocessing Bean Data (on the road to Machine Learning)</title>
-      <link>/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</link>
+      <link>https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</guid>
+      <guid>https://keatonwilson.github.io/2018/04/preprocessing-bean-data-on-the-road-to-machine-learning/</guid>
       <description>The gist Let’s dive a bit deeper into the bean project - this post is the first in a series that will hopefully get at the meat of the project. One of the main questions of this endeavor is: Can we build a model that does a good job of predicting future market prices?
 More generally: If I know something about the price of garbanzo beans today, and some of the market characteristics, can I predict with a good degree of accuracy what the price will be 6 months from now?</description>
     </item>
     
     <item>
       <title>An overview of the bean project</title>
-      <link>/2018/03/an-overview-of-the-bean-project/</link>
+      <link>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</link>
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/an-overview-of-the-bean-project/</guid>
+      <guid>https://keatonwilson.github.io/2018/03/an-overview-of-the-bean-project/</guid>
       <description>Beans I’m the son of a bean broker. Both my dad and his dad worked in the dry bean industry in the US - which seems niche, but it’s really fascinating. When I originally started thinking about applying data science tools to problems outside of academia (in my case, outside of plants and insects and ecology), I immediately thought of beans. It’s something my father and I have talked about frequently, and a world I’ve always been interested in.</description>
     </item>
     

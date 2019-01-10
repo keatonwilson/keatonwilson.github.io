@@ -1,0 +1,26 @@
+---
+title: Web Scraping House Price Data
+author: Keaton Wilson
+date: '2018-12-24'
+slug: web-scraping-house-price-data
+categories:
+  - web scraping
+tags:
+  - house prices  
+summary: >
+  An overview of a set of web-scraping tools I've developed to pull out information on ~ 30,000 homes sold in the last 36 months in Tucson, AZ. Eventually, I'll build a machine-learning model to predict home values with this data, but this post is simply on developing the tools to scrape successfully. 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rmarkdown)
+```
+
+# Why scrape?  
+
+Over at [Sonoran Data Science](www.sonorandatascience.com), we created an interactive map that displays crime data for Tucson, AZ. Though these types of interactice plots are useful (and interesting), our ultimate goal was to also see if we could use this data in combination with with housing price data to build a machine learning model that predicts house prices in Tucson.  
+
+One problem crept up: it's hard to find data on single homes. There are lots of great aggregated data through the APIs of companies like Zillow, but we wanted the good raw stuff. Which is why we needed to scrape. What is web scraping? Well, in our case, it's yanking data that is freely available to users of the site (think of data on individual home prices on the Zillow front page), but automating the collecting of that data so it doesn't take a human 10 years worth of work to get it all.  
+
+It's taken a bit of work, but hopefully this post will be useful for others in similar situations.  
+
